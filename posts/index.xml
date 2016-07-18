@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My blog</title>
+    <link>https://pradippatil.github.io/posts/</link>
+    <description>Recent content in Posts on My blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Jul 2016 20:49:58 -0400</lastBuildDate>
+    <atom:link href="https://pradippatil.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>first</title>
+      <link>https://pradippatil.github.io/posts/first/</link>
+      <pubDate>Sun, 17 Jul 2016 20:49:58 -0400</pubDate>
+      
+      <guid>https://pradippatil.github.io/posts/first/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
