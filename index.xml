@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My blog</title>
+      <title> on My blog </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>https://pradippatil.github.io/</link>
-    <description>Recent content on My blog</description>
-    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Jul 2016 20:49:58 -0400</lastBuildDate>
-    <atom:link href="https://pradippatil.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <updated>Sun, 17 Jul 2016 20:49:58 -0400</updated>
     
     <item>
       <title>first</title>
