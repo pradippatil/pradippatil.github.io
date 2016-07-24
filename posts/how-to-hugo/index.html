@@ -7,24 +7,27 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <meta property="og:title" content=" about &middot;  Pradip&#39;s blog" />
-        <meta property="og:site_name" content="Pradip&#39;s blog" />
-        <meta property="og:url" content="https://pradippatil.github.io/about/" />
+        <meta property="og:title" content=" Build a version controlled blog using Hugo, GitHub and Drone.io &middot;  Pradip Patil" />
+        <meta property="og:site_name" content="Pradip Patil" />
+        <meta property="og:url" content="https://pradippatil.github.io/posts/how-to-hugo/" />
 
     
         <meta property="og:type" content="article" />
-        <meta property="og:article:published_time" content="2016-07-17T20:49:57-04:00" />
+        <meta property="og:article:published_time" content="2016-07-20T22:04:05-04:00" />
+        <meta property="og:article:tag" content="hugo" />
+        <meta property="og:article:tag" content="githubpages" />
+        <meta property="og:article:tag" content="drone.io" />
         
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@" />
         <meta name="twitter:creator" content="@" />
-        <meta name="twitter:title" content="about" />
+        <meta name="twitter:title" content="Build a version controlled blog using Hugo, GitHub and Drone.io" />
         <meta name="twitter:description" content="" />
-        <meta name="twitter:url" content="https://pradippatil.github.io/about/" />
+        <meta name="twitter:url" content="https://pradippatil.github.io/posts/how-to-hugo/" />
     
 
-        <title> about &middot;  Pradip&#39;s blog</title>
+        <title> Build a version controlled blog using Hugo, GitHub and Drone.io &middot;  Pradip Patil</title>
 
     
         <meta name="description" content="" />
@@ -39,25 +42,25 @@
           
 
     
-        <link href="https://pradippatil.github.ioindex.xml" rel="alternate" type="application/rss+xml" title="Pradip&#39;s blog" />
+        <link href="https://pradippatil.github.ioindex.xml" rel="alternate" type="application/rss+xml" title="Pradip Patil" />
     
 
     
-        <link rel="canonical" href="https://pradippatil.github.io/about/" />
+        <link rel="canonical" href="https://pradippatil.github.io/posts/how-to-hugo/" />
 
     
     <script type="application/ld+json">
     { 
         "@context": "http://schema.org",
         "@type": "Article",
-        "headline": "about",
+        "headline": "Build a version controlled blog using Hugo, GitHub and Drone.io",
         "author": {
             "@type": "Person",
             "name": "http://profiles.google.com/?rel=author"
         },
-        "datePublished": "2016-07-17",
+        "datePublished": "2016-07-20",
         "description": "",
-        "wordCount":  0 
+        "wordCount":  1286 
     }
     </script>
     
@@ -68,8 +71,8 @@
     </head>
     <body>
         <header id="header">
-            <a id="logo" href="https://pradippatil.github.io"><img src="https://s.gravatar.com/avatar/fd4fa60c6b287ee4f006d6c4e320daf5?s=500" alt="Pradip&#39;s blog" /></a>
-            <h1><a href="https://pradippatil.github.io">Pradip&#39;s blog</a></h1>
+            <a id="logo" href="https://pradippatil.github.io"><img src="https://s.gravatar.com/avatar/fd4fa60c6b287ee4f006d6c4e320daf5?s=500" alt="Pradip Patil" /></a>
+            <h1><a href="https://pradippatil.github.io">Pradip Patil</a></h1>
             <p></p>
 
             <div id="follow-icons">
@@ -87,21 +90,276 @@
 
 <main id="content">
 
-<article id="" class="page">
+<article id="" class="posts">
     <div class="post-stamp">
-        <time datetime="2016-07-17T20:49:57-04:00">
-            17 Jul 2016
+        <time datetime="2016-07-20T22:04:05-04:00">
+            20 Jul 2016
         </time>
         <span class="taglist">
         
+        &middot;
+        
+            <a href="https://pradippatil.github.iotags/hugo/">hugo</a>
+        
+            <a href="https://pradippatil.github.iotags/githubpages/">githubpages</a>
+        
+            <a href="https://pradippatil.github.iotags/drone.io/">drone.io</a>
+        
+        
         </span>
     </div>
-    <h1 class="post-title">about</h1>
+    <h1 class="post-title">Build a version controlled blog using Hugo, GitHub and Drone.io</h1>
     
+
+<p>CMSs such as <em>Wordpress</em>, <em>Drupal</em> are relatively easy to setup and install but usually overkill for static websites like many of the personal blogs.
+I prefer an alternative, <a href="https://gohugo.io/">Hugo</a> to generate static site, <a href="https://pages.github.com/">GitHub Pages</a>
+for version control and hosting, and <a href="https://drone.io/">Drone.io</a> for auto deployment.</p>
+
+<p>Read below to find out how one can build a static blog/website blazing fast using these tools.</p>
+
+<h3 id="1-build-a-static-blog">1. Build a static blog</h3>
+
+<p>A static web pages are delivered to user exactly as stored unlike dynamic web pages which includes web server processing for every request,
+   for example, getting data from database, embedding it in configured templates  and generating a HTML page to deliver to user. Absense of such
+   processing makes static websites faster and more reliable.</p>
+
+<p>Here&rsquo;s a very good <a href="https://davidwalsh.name/introduction-static-site-generators">introduction to static site generators</a>.<br />
+   Also, read <a href="https://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/">why static website generators are the next big thing</a>.</p>
+
+<p>There are <a href="https://staticsitegenerators.net/">several</a> static site generators today. I like <a href="https://gohugo.io/">Hugo</a>
+   which is written in Go (we don&rsquo;t need to know Go programming to use it). Let&rsquo;s build a blog from scratch using Hugo.</p>
+
+<ul>
+<li><p>Install Hugo from <em>Downloads</em> section of <a href="https://github.com/spf13/hugo/releases">latest release</a>. Successful installation will
+enable <em>hugo</em> command. Try below to check version.</p>
+
+<pre><code>$ hugo version 
+Hugo Static Site Generator v0.16 BuildDate: 2016-06-12T07:00:35-04:00
+</code></pre></li>
+
+<li><p>Create a blog in your home directory.
+    $ cd $HOME
+    $ hugo new site myblog
+It will create a directory <em>myblog</em> with below structure.</p>
+
+<pre><code>myblog
+|-- archetypes
+|-- config.toml
+|-- content
+|-- data
+|-- layouts
+|-- static
+`-- themes
+6 directories, 1 file
+</code></pre></li>
+
+<li><p>Write first post<br />
+Hugo natively supports <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, which is super easy format to write our blog posts.
+Create a post using below command.</p>
+
+<pre><code>$ cd myblog
+$ hugo new posts/first.md
+/home/pradip/myblog/content/posts/first.md created
+</code></pre>
+
+<p>It puts all our posts in <em>content</em> directory (created <em>posts</em> directory since we used it in command).
+Hugo uses <a href="https://github.com/toml-lang/toml">TOML</a> as default language for configuration and post&rsquo;s metadata aka <em>front matter</em> (supports YAML, JSON as well).
+For example, it added <em>date</em>, <em>draft</em> and <em>title</em> tags in front matter for first post we just created.
+We can create custom front matter by <a href="http://gohugo.io/content/archetypes/">creating an archetype</a>.</p>
+
+<pre><code>$ cat /home/pradip/myblog/content/posts/first.md
++++
+date = &quot;2016-07-23T19:46:34-04:00&quot;
+draft = true
+title = &quot;first&quot;
+
++++
+</code></pre>
+
+<p>Let&rsquo;s add some content to our post, say <code>Hello, World !</code> after <code>+++</code> at end.</p></li>
+
+<li><p>Add a theme<br />
+Hugo has many <a href="http://themes.gohugo.io/">themes</a> ready to use. We will use <em>hugo-uno</em>. Clone it&rsquo;s git repository in <em>themes</em> directory.</p>
+
+<pre><code>$ git clone https://github.com/fredrikloch/hugo-uno.git themes/hugo-uno
+Cloning into 'themes/hugo-uno'...
+remote: Counting objects: 517, done.
+remote: Total 517 (delta 0), reused 0 (delta 0), pack-reused 517
+Receiving objects: 100% (517/517), 3.75 MiB | 2.21 MiB/s, done.
+Resolving deltas: 100% (249/249), done.
+Checking connectivity... done.
+</code></pre></li>
+
+<li><p>Update configuration<br />
+<em>config.toml</em> contains configuration for our site which can be updated as we need. Default configuration looks like,</p>
+
+<pre><code>$ cat config.toml 
+baseurl = &quot;http://replace-this-with-your-hugo-site.com/&quot;
+languageCode = &quot;en-us&quot;
+title = &quot;My New Hugo Site&quot;
+</code></pre>
+
+<p>Let&rsquo;s add theme name at end <code>theme = &quot;hugo-uno&quot;</code>.</p></li>
+
+<li><p>Generate static site<br />
+As we are ready with configuration and our first post, let&rsquo;s generate site and see how does it look.</p>
+
+<pre><code>$ hugo --buildDrafts 
+Started building site
+1 of 1 draft rendered
+0 future content
+1 pages created
+0 non-page files copied
+0 paginator pages created
+0 tags created
+0 categories created
+in 86 ms
+</code></pre>
+
+<p><code>--buildDrafts</code> is needed to compile draft posts (i.e. posts which have <code>draft = 'true'</code> in their front matter).
+It generates our site and puts it <em>public</em> directory.</p>
+
+<pre><code>myblog
+|-- archetypes
+|-- config.toml
+|-- content
+|-- data
+|-- layouts
+|-- public
+|-- static
+`-- themes
+
+7 directories, 1 file
+</code></pre></li>
+
+<li><p>Preview our blog on local machine<br />
+Hugo provides its own webserver which builds and serves the site. Let&rsquo;s start server for our blog.</p>
+
+<pre><code>$ hugo server
+hugo server
+Started building site
+0 draft content
+0 future content
+1 pages created
+0 non-page files copied
+7 paginator pages created
+3 tags created
+2 categories created
+in 63 ms
+Watching for changes in /home/pradip/github/myblog/{data,content,layouts,static,themes}
+Serving pages from memory
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+</code></pre>
+
+<p>Open <a href="http://localhost:1313/">http://localhost:1313/</a> in your browser to find your blog up and running. If you make any changes to your posts
+while server is running, it detects the changes and reloads browser to show the changes - very handy to preview your
+changes real-time.</p>
+
+<p>You can now customize blog&rsquo;s features and styling further as you wish. Read <a href="http://gohugo.io/themes/overview/">hugo theme docs</a> for more details.</p></li>
+</ul>
+
+<h3 id="2-host-your-blog-on-github">2. Host your blog on GitHub</h3>
+
+<p>GitHub lets us host a site directly from a special repository. Head over to <a href="https://github.com/">GitHub</a> and
+  create a new repository named <em>username.github.io</em>, where username is your user name on GitHub.<br />
+  <em>If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.</em></p>
+
+<p>We will put our hugo generated blog (i.e. only contents of <em>public</em> directory from <em>myblog</em> directory) in <em>username.github.io</em>.
+  Make sure to replace <em>username</em> with your real user name in below commands.</p>
+
+<pre><code>$ cd $HOME
+$ git clone https://github.com/username/username.github.io.git
+$ cp -r myblog/public/* username.github.io/
+$ cd username.github.io
+$ git add --all
+$ git commit -m'first version'
+$ git push origin master
+</code></pre>
+
+<p>You will see contents of <em>public</em> directory in your GitHub repository now. Open <a href="https://username.github.io">https://username.github.io</a> to see your blog live. Hurrah!</p>
+
+<h3 id="3-auto-deploy-your-blog-with-drone-io">3. Auto deploy your blog with Drone.io</h3>
+
+<p>We have our blog live!. What next? We will keep adding contents to this blog. For every change in blog which we want to make live,
+  we need to re-generate static site using hugo and push it to <em>username.github.io</em>. Doing it manually every time is no fun. That&rsquo;s where
+  we call <strong>C</strong>ontinuous <strong>I</strong>ntegration services to the rescue.</p>
+
+<p>There are <a href="https://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software">several CI tools</a> today,
+  I chose Drone.io as it needs minimal configuration to get the work done. Also it allows us unlimited builds for unlimited public repositories.</p>
+
+<ul>
+<li><p>Add source code to a new GitHub repository:
+Create a new GitHub repository with same name as our created blog i.e. <em>myblog</em>
+Source code needed for building our blog is everything except <em>public</em> directory. So no need to upload <em>public</em> directory to <em>myblog</em> repository.
+Let&rsquo;s put it in <em>.gitignore</em> file (git ignores files/directories matching patterns in this file).</p>
+
+<pre><code>$ echo &quot;./public&quot; &gt; .gitignore
+</code></pre>
+
+<p>Also, we have cloned <em>hugo-uno</em> them from external repository. So we can link that repository as submodule instead of uploading whole theme
+in our repository.</p>
+
+<pre><code>$ git submodule add https://github.com/SenjinDarashiva/hugo-uno themes/hugo-uno
+</code></pre>
+
+<p>This will create <em>.gitmodules</em> file.</p>
+
+<pre><code>$ cat .gitmodules
+[submodule &quot;themes/hugo-uno&quot;]
+path = themes/hugo-uno
+url = https://github.com/SenjinDarashiva/hugo-uno
+</code></pre>
+
+<p>We&rsquo;re ready to populate <em>myblog</em> repository.</p>
+
+<pre><code> $ git add --all
+ $ git commit -m'committing source'
+ $ git remote add origin https://github.com/username/myblog.git
+</code></pre></li>
+
+<li><p>Create build script:
+Copy my build script <em>deploy.sh</em> in <em>myblog</em> directory and make it executable.</p>
+
+<pre><code>$ curl https://raw.githubusercontent.com/pradippatil/myblog/master/deploy.sh &gt; deploy.sh &amp;&amp; chmod 755 deploy.sh
+</code></pre>
+
+<p>Make sure you replace username and email from below params with your username and email.</p>
+
+<pre><code>    git config user.name 
+    git config user.email
+    git remote add upstream 
+</code></pre></li>
+
+<li><p>Create a GitHub personal access token for Drone.io to push our static blog to <em>username.github.io</em> repository.
+Use this <a href="https://github.com/settings/tokens/new">url</a> and choose <em>public_repo</em> as scope.
+Copy and Paste generated token for use in next step.</p></li>
+
+<li><p>Configure build on Drone.io</p>
+
+<ul>
+<li>Register on <a href="https://drone.io/">Drone.io</a> using GitHub account.</li>
+<li>After successful registration. Choose New Project -&gt; GitHub -&gt; It&rsquo;ll list all our repositories, including our new <em>myblog</em> -&gt;
+Select <em>myblog</em> -&gt; Select <em>Go</em> -&gt; write <em>./deploy.sh</em> in build script window -&gt; write GH_TOKEN=&lt;<em>paste here token generated in previous stage</em>&gt; in <em>Environment Variables</em> section &ndash;&gt; Save</li>
+<li>Done!
+<br /></li>
+</ul></li>
+
+<li><p>Submit all changes to <em>myblog</em> repository.</p>
+
+<pre><code>$ git push -u origin master
+</code></pre>
+
+<p>As soon as you push the changes in <em>myblog</em>, Drone.io will start to build using <em>deploy.sh</em> and after successful build, it will push <em>public</em> directory to <em>username.githug.io</em> repository.</p></li>
+</ul>
+
+<p>Yay! We&rsquo;ve just created a version controlled blog with automated deployment.
+Let me know how does it work for you in comments.</p>
+
     <div id="social-bar">
 	<ul class="rrssb-buttons clearfix">
       <li class="email">
-          <a href="mailto:?subject=about&amp;body=https://pradippatil.github.io/about/">
+          <a href="mailto:?subject=Build%20a%20version%20controlled%20blog%20using%20Hugo%2c%20GitHub%20and%20Drone.io&amp;body=https://pradippatil.github.io/posts/how-to-hugo/">
               <span class="icon">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                       <path transform="scale(0.014,-0.014) translate(0,-1670)" d="M1792 826v-794q0 -66 -47 -113t-113 -47h-1472q-66 0 -113 47t-47 113v794q44 -49 101 -87q362 -246 497 -345q57 -42 92.5 -65.5t94.5 -48t110 -24.5h1h1q51 0 110 24.5t94.5 48t92.5 65.5q170 123 498 345q57 39 100 87zM1792 1120q0 -79 -49 -151t-122 -123 q-376 -261 -468 -325q-10 -7 -42.5 -30.5t-54 -38t-52 -32.5t-57.5 -27t-50 -9h-1h-1q-23 0 -50 9t-57.5 27t-52 32.5t-54 38t-42.5 30.5q-91 64 -262 182.5t-205 142.5q-62 42 -117 115.5t-55 136.5q0 78 41.5 130t118.5 52h1472q65 0 112.5 -47t47.5 -113z"/>
@@ -111,7 +369,7 @@
           </a>
       </li>
       <li class="facebook">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://pradippatil.github.io/about/" class="popup">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://pradippatil.github.io/posts/how-to-hugo/" class="popup">
               <span class="icon">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                       <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434 c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726 c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z"/>
@@ -121,7 +379,7 @@
           </a>
       </li>
 			<li class="twitter">
-          <a href="http://twitter.com/home?status=about%20https://pradippatil.github.io/about/" class="popup">
+          <a href="http://twitter.com/home?status=Build%20a%20version%20controlled%20blog%20using%20Hugo%2c%20GitHub%20and%20Drone.io%20https://pradippatil.github.io/posts/how-to-hugo/" class="popup">
               <span class="icon">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
 		                  <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32 c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155 C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965 C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683 c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851 C26.275,7.229,25.39,8.196,24.253,8.756z"/>
@@ -131,7 +389,7 @@
           </a>
       </li>
 			<li class="linkedin">
-          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://pradippatil.github.io/about/&amp;title=about&amp;summary=..." class="popup">
+          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://pradippatil.github.io/posts/how-to-hugo/&amp;title=Build%20a%20version%20controlled%20blog%20using%20Hugo%2c%20GitHub%20and%20Drone.io&amp;summary=CMSs%20such%20as%20Wordpress%2c%20Drupal%20are%20relatively%20easy%20to%20setup%20and%20install%20but%20usually%20overkill%20for%20static%20websites%20like%20many%20of%20the%20personal%20blogs.%20I%20prefer%20an%20alternative%2c%20Hugo%20to%20generate%20static%20site%2c%20GitHub%20Pages%20for%20version%20control%20and%20hosting%2c%20and%20Drone.io%20for%20auto%20deployment.%20Read%20below%20to%20find%20out%20how%20one%20can%20build%20a%20static%20blog%2fwebsite%20blazing%20fast%20using%20these%20tools.%201.%20Build%20a%20static%20blog%20A%20static%20web%20pages%20are%20delivered%20to%20user%20exactly%20as%20stored%20unlike%20dynamic%20web%20pages%20which%20includes%20web%20server%20processing%20for%20every%20request%2c%20for%20example%2c%20getting%20data%20from%20database%2c%20embedding%20it%20in%20configured%20templates%20and%20generating%20a%20HTML%20page%20to%20deliver%20to%20user...." class="popup">
               <span class="icon">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                       <path d="M25.424,15.887v8.447h-4.896v-7.882c0-1.979-0.709-3.331-2.48-3.331c-1.354,0-2.158,0.911-2.514,1.803 c-0.129,0.315-0.162,0.753-0.162,1.194v8.216h-4.899c0,0,0.066-13.349,0-14.731h4.899v2.088c-0.01,0.016-0.023,0.032-0.033,0.048 h0.033V11.69c0.65-1.002,1.812-2.435,4.414-2.435C23.008,9.254,25.424,11.361,25.424,15.887z M5.348,2.501 c-1.676,0-2.772,1.092-2.772,2.539c0,1.421,1.066,2.538,2.717,2.546h0.032c1.709,0,2.771-1.132,2.771-2.546 C8.054,3.593,7.019,2.501,5.343,2.501H5.348z M2.867,24.334h4.897V9.603H2.867V24.334z"/>
@@ -142,7 +400,7 @@
       </li>
       <li class="tumblr">
 					<script>
-						document.write('<a href="http://www.tumblr.com/share?v=3&amp;u=' + encodeURIComponent('https:\/\/pradippatil.github.io\/about\/') + '&amp;t=about" class="popup">');
+						document.write('<a href="http://www.tumblr.com/share?v=3&amp;u=' + encodeURIComponent('https:\/\/pradippatil.github.io\/posts\/how-to-hugo\/') + '&amp;t=Build a version controlled blog using Hugo, GitHub and Drone.io" class="popup">');
 					</script>
               <span class="icon">
                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
@@ -153,7 +411,7 @@
           <script>document.write('</a>');</script>
       </li>
       <li class="reddit">
-          <a href="http://www.reddit.com/submit?url=https://pradippatil.github.io/about/">
+          <a href="http://www.reddit.com/submit?url=https://pradippatil.github.io/posts/how-to-hugo/">
               <span class="icon">
                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
 											<g>
@@ -168,7 +426,7 @@
           </a>
       </li>
       <li class="googleplus">
-          <a href="https://plus.google.com/share?url=https://pradippatil.github.io/about/" class="popup">
+          <a href="https://plus.google.com/share?url=https://pradippatil.github.io/posts/how-to-hugo/" class="popup">
               <span class="icon">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                       <g>
@@ -183,11 +441,11 @@
       <li class="pinterest">
           <script>
 						var imgurl = "https:\/\/pradippatil.github.iologo.png";
-						var firstimg = document.getElementsByClassName("page")[0].getElementsByTagName("img")[0];
+						var firstimg = document.getElementsByClassName("posts")[0].getElementsByTagName("img")[0];
 						if (firstimg !== undefined) {
 							imgurl = firstimg.src;
 						}
-						document.write('<a href="http://pinterest.com/pin/create/button/?url=https:\/\/pradippatil.github.io\/about\/&amp;media=' + imgurl + '&amp;description=about" class="popup">');
+						document.write('<a href="http://pinterest.com/pin/create/button/?url=https:\/\/pradippatil.github.io\/posts\/how-to-hugo\/&amp;media=' + imgurl + '&amp;description=Build a version controlled blog using Hugo, GitHub and Drone.io" class="popup">');
 					</script>
               <span class="icon">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
@@ -198,7 +456,7 @@
           <script>document.write('</a>');</script>
       </li>
       <li class="pocket">
-          <a href="https://getpocket.com/save?url=https://pradippatil.github.io/about/"  class="popup">
+          <a href="https://getpocket.com/save?url=https://pradippatil.github.io/posts/how-to-hugo/"  class="popup">
               <span class="icon">
                   <svg width="32px" height="28px" viewBox="0 0 32 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
                       <path d="M28.7817528,0.00172488695 C30.8117487,0.00431221738 31.9749312,1.12074529 31.9644402,3.10781507 C31.942147,6.67703739 32.1336065,10.2669583 31.8057648,13.8090137 C30.7147076,25.5813672 17.2181194,31.8996281 7.20714461,25.3808491 C2.71833574,22.4571656 0.196577202,18.3122624 0.0549495772,12.9357897 C-0.0342233715,9.5774348 0.00642900214,6.21519891 0.0300336062,2.85555035 C0.0405245414,1.1129833 1.21157517,0.0146615391 3.01995012,0.00819321302 C7.34746087,-0.00603710433 11.6775944,0.00431221738 16.0064164,0.00172488695 C20.2644248,0.00172488695 24.5237444,-0.00215610869 28.7817528,0.00172488695 L28.7817528,0.00172488695 Z M8.64885184,7.85611511 C7.38773662,7.99113854 6.66148108,8.42606978 6.29310958,9.33228474 C5.90114134,10.2969233 6.17774769,11.1421181 6.89875951,11.8276216 C9.35282156,14.161969 11.8108164,16.4924215 14.2976518,18.7943114 C15.3844131,19.7966007 16.5354102,19.7836177 17.6116843,18.7813283 C20.0185529,16.5495467 22.4070683,14.2982907 24.7824746,12.0327533 C25.9845979,10.8850542 26.1012707,9.56468083 25.1469132,8.60653379 C24.1361858,7.59255976 22.8449191,7.6743528 21.5890476,8.85191291 C19.9936451,10.3488554 18.3680912,11.8172352 16.8395462,13.3777945 C16.1342655,14.093159 15.7200114,14.0048744 15.0566806,13.3440386 C13.4599671,11.7484252 11.8081945,10.2060421 10.1262706,8.70001155 C9.65564653,8.27936164 9.00411403,8.05345704 8.64885184,7.85611511 L8.64885184,7.85611511 L8.64885184,7.85611511 Z"></path>
@@ -224,7 +482,7 @@
 
 </main>
 		<footer id="footer">
-			<section id="footer-message">&copy; Pradip&#39;s blog. All rights reserved. Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>. <a href="https://github.com/kathyqian/crisp-ghost-theme" target="_blank">Crisp</a> theme by <a href="http://kathyqian.com" target="_blank">Kathy Qian</a>.</section>
+			<section id="footer-message">&copy; Pradip Patil. All rights reserved. Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>. <a href="https://github.com/kathyqian/crisp-ghost-theme" target="_blank">Crisp</a> theme by <a href="http://kathyqian.com" target="_blank">Kathy Qian</a>.</section>
 		</footer>
 
     <script>
