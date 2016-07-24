@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
-    <link>https://pradippatil.github.io/</link>
-    <description>Recent content on </description>
+    <title>Hugo on </title>
+    <link>https://pradippatil.github.io/categories/hugo/</link>
+    <description>Recent content in Hugo on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Jul 2016 22:04:05 -0400</lastBuildDate>
-    <atom:link href="https://pradippatil.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://pradippatil.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Build a version controlled blog using Hugo, GitHub and Drone.io</title>
@@ -264,37 +264,6 @@ Select &lt;em&gt;myblog&lt;/em&gt; -&amp;gt; Select &lt;em&gt;Go&lt;/em&gt; -&am
 
 &lt;p&gt;Yay! We&amp;rsquo;ve just created a version controlled blog with automated deployment.
 Let me know how does it work for you in comments.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://pradippatil.github.io/license/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://pradippatil.github.io/license/</guid>
-      <description>&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;The MIT License (MIT)
-
-Copyright (c) 2016 Pradip Patil
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &amp;quot;Software&amp;quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED &amp;quot;AS IS&amp;quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
