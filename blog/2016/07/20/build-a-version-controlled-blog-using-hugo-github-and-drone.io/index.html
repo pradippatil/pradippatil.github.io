@@ -138,7 +138,7 @@ $ hugo new site myblog
 6 directories, 1 file
 </code></pre></li>
 
-<li><p>Write first post<br />
+<li><p>Write first post.<br />
 Hugo natively supports <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, which is super easy format to write our blog posts.
 Create a post using below command.</p>
 
@@ -176,7 +176,7 @@ Checking connectivity... done.
 </code></pre></li>
 
 <li><p>Update configuration<br />
-<em>config.toml</em> contains configuration for our site which can be updated as we need. Default configuration looks like,</p>
+<em>config.toml</em> contains configuration for our site which can be overridden as we need. Default configuration looks like,</p>
 
 <pre><code>$ cat config.toml 
 baseurl = &quot;http://replace-this-with-your-hugo-site.com/&quot;
@@ -184,7 +184,7 @@ languageCode = &quot;en-us&quot;
 title = &quot;My New Hugo Site&quot;
 </code></pre>
 
-<p>Let&rsquo;s add theme name at end <code>theme = &quot;hugo-uno&quot;</code>.</p></li>
+<p>Add theme name at end <code>theme = &quot;hugo-uno&quot;</code>.</p></li>
 
 <li><p>Generate static site<br />
 As we are ready with configuration and our first post, let&rsquo;s generate site and see how does it look.</p>
@@ -218,7 +218,7 @@ It generates our site and puts it <em>public</em> directory.</p>
 </code></pre></li>
 
 <li><p>Preview our blog on local machine<br />
-Hugo provides its own webserver which builds and serves the site. Let&rsquo;s start server for our blog.</p>
+Hugo provides its own webserver which builds and serves the site. Let&rsquo;s start server for our blog by executing below commnd in <em>myblog</em> directory. by executing below command in <em>myblog</em> directory.</p>
 
 <pre><code>$ hugo server
 hugo server
@@ -237,7 +237,7 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 </code></pre>
 
-<p>Open <a href="http://localhost:1313/">http://localhost:1313/</a> in your browser to find your blog up and running. If you make any changes to your posts
+<p>Now, open <a href="http://localhost:1313/">http://localhost:1313/</a> in your browser to find your blog up and running. If you make any changes to your posts
 while server is running, it detects the changes and reloads browser to show the changes - very handy to preview your
 changes real-time.</p>
 
@@ -246,12 +246,12 @@ changes real-time.</p>
 
 <h3 id="2-host-your-blog-on-github">2. Host your blog on GitHub</h3>
 
-<p>GitHub lets us host a site directly from a special repository. Head over to <a href="https://github.com/">GitHub</a> and
+<p>Let&rsquo;s host our little blog so that we can access it on interweb. GitHub lets us host a site directly from a special repository. Head over to <a href="https://github.com/">GitHub</a> and
   create a new repository named <em>username.github.io</em>, where username is your user name on GitHub.<br />
   <em>If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.</em></p>
 
 <p>We will put our hugo generated blog (i.e. only contents of <em>public</em> directory from <em>myblog</em> directory) in <em>username.github.io</em>.
-  Make sure to replace <em>username</em> with your real user name in below commands.</p>
+  Make sure to replace <em>username</em> with your GitHub user name in below commands.</p>
 
 <pre><code>$ cd $HOME
 $ git clone https://github.com/username/username.github.io.git
@@ -274,15 +274,15 @@ $ git push origin master
   I chose Drone.io as it needs minimal configuration to get the work done. Also it allows us unlimited builds for unlimited public repositories.</p>
 
 <ul>
-<li><p>Add source code to a new GitHub repository:
+<li><p>Add source code to a new GitHub repository<br />
 Create a new GitHub repository with same name as our created blog i.e. <em>myblog</em>
-Source code needed for building our blog is everything except <em>public</em> directory. So no need to upload <em>public</em> directory to <em>myblog</em> repository.
+Source code needed for Hugo to build our blog is everything except <em>public</em> directory. So no need to upload <em>public</em> directory to <em>myblog</em> repository.
 Let&rsquo;s put it in <em>.gitignore</em> file (git ignores files/directories matching patterns in this file).</p>
 
 <pre><code>$ echo &quot;./public&quot; &gt; .gitignore
 </code></pre>
 
-<p>Also, we have cloned <em>hugo-uno</em> them from external repository. So we can link that repository as submodule instead of uploading whole theme
+<p>Also, we have cloned <em>hugo-uno</em> theme from external repository. Let&rsquo;s link that repository as submodule instead of uploading whole theme
 in our repository.</p>
 
 <pre><code>$ git submodule add https://github.com/SenjinDarashiva/hugo-uno themes/hugo-uno
@@ -303,13 +303,13 @@ url = https://github.com/SenjinDarashiva/hugo-uno
  $ git remote add origin https://github.com/username/myblog.git
 </code></pre></li>
 
-<li><p>Create build script:
+<li><p>Create build script:<br />
 Copy my build script <em>deploy.sh</em> in <em>myblog</em> directory and make it executable.</p>
 
 <pre><code>$ curl https://raw.githubusercontent.com/pradippatil/myblog/master/deploy.sh &gt; deploy.sh &amp;&amp; chmod 755 deploy.sh
 </code></pre>
 
-<p>Make sure you replace username and email from below params with your username and email.</p>
+<p>Edit <em>deploy.sh</em> to replace username and email from below params with your username and email.</p>
 
 <pre><code>    git config user.name 
     git config user.email
@@ -317,15 +317,15 @@ Copy my build script <em>deploy.sh</em> in <em>myblog</em> directory and make it
 </code></pre></li>
 
 <li><p>Create a GitHub personal access token for Drone.io to push our static blog to <em>username.github.io</em> repository.
-Use this <a href="https://github.com/settings/tokens/new">url</a> and choose <em>public_repo</em> as scope.
+Use <a href="https://github.com/settings/tokens/new">this url</a> and choose <em>public_repo</em> as scope.
 Copy and Paste generated token for use in next step.</p></li>
 
 <li><p>Configure build on Drone.io</p>
 
 <ul>
 <li>Register on <a href="https://drone.io/">Drone.io</a> using GitHub account.</li>
-<li>After successful registration. Choose New Project -&gt; GitHub -&gt; It&rsquo;ll list all our repositories, including our new <em>myblog</em> -&gt;
-Select <em>myblog</em> -&gt; Select <em>Go</em> -&gt; write <em>./deploy.sh</em> in build script window -&gt; write GH_TOKEN=&lt;<em>paste here token generated in previous stage</em>&gt; in <em>Environment Variables</em> section &ndash;&gt; Save</li>
+<li>After successful registration. Select <em>New Project</em> -&gt; <em>GitHub</em> -&gt; It&rsquo;ll list all repositories, including our new <em>myblog</em> -&gt;
+Select <em>myblog</em> -&gt; Select <em>Go</em> -&gt; write <em>./deploy.sh</em> in build script window -&gt; write GH_TOKEN=&lt;<em>paste here token generated in previous stage</em>&gt; in <em>Environment Variables</em> section &ndash;&gt; Click on <em>Save</em></li>
 <li>Done!
 <br /></li>
 </ul></li>
@@ -335,7 +335,8 @@ Select <em>myblog</em> -&gt; Select <em>Go</em> -&gt; write <em>./deploy.sh</em>
 <pre><code>$ git push -u origin master
 </code></pre>
 
-<p>As soon as you push the changes in <em>myblog</em>, Drone.io will start to build using <em>deploy.sh</em> and after successful build, it will push <em>public</em> directory to <em>username.githug.io</em> repository.</p></li>
+<p>As soon as you push the changes in <em>myblog</em> repo, Drone.io will start to build using <em>deploy.sh</em> and after successful build,
+it will push <em>public</em> directory to <em>username.github.io</em> repository. That&rsquo;s it! You can access your blog at <a href="https://username.github.io">https://username.github.io</a>.</p></li>
 </ul>
 
 <p>Yay! We&rsquo;ve just created a version controlled blog with automated deployment.
