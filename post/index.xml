@@ -25,7 +25,7 @@ for version control and hosting, and &lt;a href=&#34;https://drone.io/&#34;&gt;D
 
 &lt;h3 id=&#34;1-build-a-static-blog-locally&#34;&gt;1. Build a static blog locally&lt;/h3&gt;
 
-&lt;p&gt;A static web pages are delivered to user exactly as stored unlike dynamic web pages which include web server processing for every request,
+&lt;p&gt;Static web pages are delivered to user exactly as stored unlike dynamic web pages which include web server processing for every request,
    for example, getting data from database, embedding it in configured templates  and generating a HTML page to deliver to user. Absense of such
    processing makes static websites faster and more reliable.&lt;/p&gt;
 
@@ -145,7 +145,6 @@ It generates our site and puts it &lt;em&gt;public&lt;/em&gt; directory.&lt;/p&g
 Hugo provides its own webserver which builds and serves the site. Let&amp;rsquo;s start server for our blog by executing below commnd in &lt;em&gt;myblog&lt;/em&gt; directory. by executing below command in &lt;em&gt;myblog&lt;/em&gt; directory.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ hugo server
-hugo server
 Started building site
 0 draft content
 0 future content
