@@ -3,14 +3,37 @@
  */
 
 .sidebar-about h1 {
-  color: #fff;
-  margin-top: 10;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
-  font-size: 2.4rem;
+    color: #fff;
+    margin-top: 10;
+    font-family: "PT Sans", Helvetica, Arial, sans-serif;
+    font-size: 2rem;
 }
 
 .sidebar-nav {
-  padding-left: 0;
-  list-style: none;
-  margin-bottom: 1rem;
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+/* Overridden by me*/
+.sidebar-nav-item {
+    padding: 5px;
+    font-weight: bold;
+
+
+}
+.sidebar .copyright {
+    font-size: 12px
+}
+
+.sidebar {
+    width: 14rem;
+    background-image: linear-gradient(-40deg, #9d261d, #99251c);
+    text-align: right;
+}
+
+
+.lead {
+    font-size: 1.2rem;
+    font-style: italic;
 }

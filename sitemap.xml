@@ -2,17 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://pradippatil.github.io/</loc>
-    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://pradippatil.github.io/blog/2016/07/20/build-a-version-controlled-blog-using-hugo-github-and-drone.io/</loc>
     <lastmod>2016-07-20T22:04:05-04:00</lastmod>
   </url>
   
   <url>
+    <loc>https://pradippatil.github.io/</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://pradippatil.github.io/license/</loc>
+  </url>
+  
+  <url>
+    <loc>https://pradippatil.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://pradippatil.github.io/categories/hugo/</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://pradippatil.github.io/post/</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>
