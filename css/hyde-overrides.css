@@ -27,7 +27,7 @@
 }
 
 .sidebar {
-    width: 14rem;
+    /*width: 14rem;*/
     background-image: linear-gradient(-40deg, #9d261d, #99251c);
     text-align: left;
 }
