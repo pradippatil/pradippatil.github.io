@@ -2,6 +2,10 @@
  * Tweaks and overrides to poole.css
  */
 
+html {
+    font-family: "Go"
+}
+
 pre {
   padding: 0
 }
