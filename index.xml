@@ -33,7 +33,7 @@
       <guid>https://pradippatil.github.io/blog/2016/07/20/build-a-version-controlled-blog-using-hugo-github-and-drone.io/</guid>
       <description>
 
-&lt;p&gt;CMSes such as &lt;em&gt;Wordpress&lt;/em&gt;, &lt;em&gt;Joomla&lt;/em&gt; are relatively easy to setup and install but usually overkill for static websites like many of the personal blogs.
+&lt;p&gt;&lt;strong&gt;C&lt;/strong&gt;ontent &lt;strong&gt;M&lt;/strong&gt;anagement &lt;strong&gt;S&lt;/strong&gt;ystems nowdays are relatively easy to setup and install but usually overkill for static websites like many of the personal blogs.
 I prefer an alternative, &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; to generate static site, &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt;
 for version control and hosting, and &lt;a href=&#34;https://drone.io/&#34;&gt;Drone.io&lt;/a&gt; for auto deployment.&lt;/p&gt;
 
