@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo on Pradip Patil</title>
+    <title>Pradip Patil</title>
     <link>https://pradippatil.github.io/tags/hugo/index.xml</link>
-    <description>Recent content in Hugo on Pradip Patil</description>
+    <description>Recent content on Pradip Patil</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017. All rights reserved.</copyright>
@@ -11,10 +11,10 @@
     
     <item>
       <title>Build a version controlled blog using Hugo, GitHub and Drone.io</title>
-      <link>https://pradippatil.github.io/post/how-to-hugo.html</link>
+      <link>https://pradippatil.github.io/post/how-to-hugo/</link>
       <pubDate>Wed, 20 Jul 2016 22:04:05 -0400</pubDate>
       
-      <guid>https://pradippatil.github.io/post/how-to-hugo.html</guid>
+      <guid>https://pradippatil.github.io/post/how-to-hugo/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;C&lt;/strong&gt;ontent &lt;strong&gt;M&lt;/strong&gt;anagement &lt;strong&gt;S&lt;/strong&gt;ystems nowdays are relatively easy to setup and install but usually overkill for static websites like many of the personal blogs.
