@@ -83,7 +83,7 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://pradippatil.github.io/test/projects.html">Projects</a>
+          <a class="pure-menu-link" href="https://pradippatil.github.io/projects.html">Projects</a>
       
         </li>
       
