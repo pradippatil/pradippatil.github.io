@@ -2,13 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://pradippatil.github.io/projects.html</loc>
+    <loc>https://pradippatil.github.io/test/projects.html</loc>
     <lastmod>2016-12-18T18:32:42-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://pradippatil.github.io/blog/2016/07/20/build-a-version-controlled-blog-using-hugo-github-and-drone.io/</loc>
+    <loc>https://pradippatil.github.io/post/how-to-hugo.html</loc>
     <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pradippatil.github.io/license.html</loc>
+  </url>
+  
+  <url>
+    <loc>https://pradippatil.github.io/tags/drone.io</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://pradippatil.github.io/tags/githubpages</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://pradippatil.github.io/tags/hugo</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://pradippatil.github.io/post</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -18,23 +46,13 @@
   </url>
   
   <url>
-    <loc>https://pradippatil.github.io/license.html</loc>
-  </url>
-  
-  <url>
-    <loc>https://pradippatil.github.io/categories</loc>
+    <loc>https://pradippatil.github.io/tags</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://pradippatil.github.io/categories/hugo</loc>
-    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://pradippatil.github.io/post</loc>
-    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <loc>https://pradippatil.github.io/test</loc>
+    <lastmod>2016-12-18T18:32:42-05:00</lastmod>
     <priority>0</priority>
   </url>
   

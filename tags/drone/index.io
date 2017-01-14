@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.19-DEV" />
 
-  <title>Pradip Patil</title>
+  <title>Drone.Io &middot; Pradip Patil</title>
 
   
   
@@ -37,7 +37,7 @@
 
   
   
-  <link rel="alternate" type="application/rss+xml" title="Pradip Patil" href="https://pradippatil.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Pradip Patil" href="https://pradippatil.github.io/tags/drone.io/index.xml" />
   
 
   
@@ -107,7 +107,7 @@
 
     
     <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://pradippatil.github.io/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      <a class="pure-menu-link" href="https://pradippatil.github.io/tags/drone.io/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
     </li>
     
 
@@ -212,8 +212,7 @@
 
 
 <div class="header">
-  <h1>Pradip Patil</h1>
-  <h2>Software Engineer</h2>
+  <h1>Drone.Io</h1>
 </div>
 
 <div class="content">
@@ -267,10 +266,6 @@ Read below to find out how one can build a static blog/website blazingly fast us
 </article>
 
   
-
-  
-
-
 </div>
 
 </div>
@@ -293,4 +288,3 @@ Read below to find out how one can build a static blog/website blazingly fast us
 
 </body>
 </html>
-

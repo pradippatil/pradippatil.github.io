@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
+    <title>Pradip Patil</title>
     <link>https://pradippatil.github.io/index.xml</link>
-    <description>Recent content on </description>
+    <description>Recent content on Pradip Patil</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>&amp;copy; 2017. All rights reserved.</copyright>
     <lastBuildDate>Sun, 18 Dec 2016 18:32:42 -0500</lastBuildDate>
     <atom:link href="https://pradippatil.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>PROJECTS</title>
-      <link>https://pradippatil.github.io/projects.html</link>
+      <title>Projects</title>
+      <link>https://pradippatil.github.io/test/projects.html</link>
       <pubDate>Sun, 18 Dec 2016 18:32:42 -0500</pubDate>
       
-      <guid>https://pradippatil.github.io/projects.html</guid>
+      <guid>https://pradippatil.github.io/test/projects.html</guid>
       <description>&lt;hr /&gt;
 
 &lt;p&gt;&lt;i class=&#34;fa fa-github fa-lg&#34;&gt;&lt;/i&gt; &lt;a href=&#34;https://github.com/pradippatil/terminal-clock&#34;&gt;terminal-clock&lt;/a&gt; -  Terminal clock using &lt;em&gt;Go&lt;/em&gt;&lt;br /&gt;
@@ -27,10 +28,10 @@
     
     <item>
       <title>Build a version controlled blog using Hugo, GitHub and Drone.io</title>
-      <link>https://pradippatil.github.io/blog/2016/07/20/build-a-version-controlled-blog-using-hugo-github-and-drone.io/</link>
+      <link>https://pradippatil.github.io/post/how-to-hugo.html</link>
       <pubDate>Wed, 20 Jul 2016 22:04:05 -0400</pubDate>
       
-      <guid>https://pradippatil.github.io/blog/2016/07/20/build-a-version-controlled-blog-using-hugo-github-and-drone.io/</guid>
+      <guid>https://pradippatil.github.io/post/how-to-hugo.html</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;C&lt;/strong&gt;ontent &lt;strong&gt;M&lt;/strong&gt;anagement &lt;strong&gt;S&lt;/strong&gt;ystems nowdays are relatively easy to setup and install but usually overkill for static websites like many of the personal blogs.

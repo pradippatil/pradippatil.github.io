@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.19-DEV" />
+
+  <title>Build a version controlled blog using Hugo, GitHub and Drone.io &middot; Pradip Patil</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://pradippatil.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://pradippatil.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://pradippatil.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/railscasts.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://pradippatil.github.ioimg/favicon.ico" type="image/x-icon" />
+
+  
+    <link rel="stylesheet" href="https://pradippatil.github.iocss/my.css">
+  
+  
+    <script src="https://pradippatil.github.iojs/my.js"></script>
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://pradippatil.github.io/">Pradip<br>Patil</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://pradippatil.github.io/post/">Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://pradippatil.github.io/test/projects.html">Projects</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://stackoverflow.com/story/pradippatil">About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://pradippatil.github.io/tags/"><i class='fa fa-tags fa-fw'></i>Tags</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/pradip__patil" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/pradippatil" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/3781709/pradip" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2017. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Build a version controlled blog using Hugo, GitHub and Drone.io</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>20 Jul 2016</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.iotags/hugo">hugo</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.iotags/githubpages">githubpages</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.iotags/drone.io">drone.io</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p><strong>C</strong>ontent <strong>M</strong>anagement <strong>S</strong>ystems nowdays are relatively easy to setup and install but usually overkill for static websites like many of the personal blogs.
+I prefer an alternative, <a href="https://gohugo.io/">Hugo</a> to generate static site, <a href="https://pages.github.com/">GitHub Pages</a>
+for version control and hosting, and <a href="https://drone.io/">Drone.io</a> for auto deployment.</p>
+
+<p>Read below to find out how one can build a static blog/website blazingly fast using these tools.</p>
+
+<h3 id="1-build-a-static-blog-locally">1. Build a static blog locally</h3>
+
+<p>Static web pages are delivered to user exactly as stored unlike dynamic web pages which include web server processing for every request,
+   for example, getting data from database, embedding it in configured templates  and generating a HTML page to deliver to user. Absense of such
+   processing makes static websites faster and more reliable.</p>
+
+<p>Here&rsquo;s a very good <a href="https://davidwalsh.name/introduction-static-site-generators">introduction to static site generators</a>.<br />
+   Also, read <a href="https://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/">why static website generators are the next big thing</a>.</p>
+
+<p>There are <a href="https://staticsitegenerators.net/">several</a> static site generators today. I like <a href="https://gohugo.io/">Hugo</a>
+   which is written in Go (we don&rsquo;t need to know Go programming to use it). Let&rsquo;s build a blog from scratch using Hugo.</p>
+
+<ul>
+<li><p>Install Hugo from <em>Downloads</em> section of <a href="https://github.com/spf13/hugo/releases">latest release</a>. Successful installation will
+enable <em>hugo</em> command. Try below to check version.</p>
+
+<pre><code>$ hugo version 
+Hugo Static Site Generator v0.16 BuildDate: 2016-06-12T07:00:35-04:00
+</code></pre></li>
+
+<li><p>Create a blog in your home directory.</p>
+
+<pre><code>$ cd $HOME 
+$ hugo new site myblog
+</code></pre>
+
+<p>It will create a directory <em>myblog</em> with below structure.</p>
+
+<pre><code>myblog
+|-- archetypes
+|-- config.toml
+|-- content
+|-- data
+|-- layouts
+|-- static
+`-- themes
+6 directories, 1 file
+</code></pre></li>
+
+<li><p>Write first post.<br />
+Hugo natively supports <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, which is super easy format to write our blog posts.
+Create a post using below command.</p>
+
+<pre><code>$ cd myblog
+$ hugo new post/first.md
+/home/pradip/myblog/content/post/first.md created
+</code></pre>
+
+<p>It puts all our posts in <em>content</em> directory (created <em>post</em> directory since we used it in command).
+Hugo uses <a href="https://github.com/toml-lang/toml">TOML</a> as default language for configuration and post&rsquo;s metadata aka <em>front matter</em> (supports YAML, JSON as well).
+For example, it added <em>date</em>, <em>draft</em> and <em>title</em> tags in front matter for first post we just created.
+We can create custom front matter by <a href="http://gohugo.io/content/archetypes/">creating an archetype</a>.</p>
+
+<pre><code>$ cat /home/pradip/myblog/content/post/first.md
++++
+date = &quot;2016-07-23T19:46:34-04:00&quot;
+draft = true
+title = &quot;first&quot;
+
++++
+</code></pre>
+
+<p>Let&rsquo;s add some content to our post, say <code>Hello, World !</code> after <code>+++</code> at end.</p></li>
+
+<li><p>Add a theme<br />
+Hugo has many <a href="http://themes.gohugo.io/">themes</a> ready to use. We will use <em>hugo-uno</em>. Clone it&rsquo;s git repository in <em>themes</em> directory.</p>
+
+<pre><code>$ git clone https://github.com/fredrikloch/hugo-uno.git themes/hugo-uno
+Cloning into 'themes/hugo-uno'...
+remote: Counting objects: 517, done.
+remote: Total 517 (delta 0), reused 0 (delta 0), pack-reused 517
+Receiving objects: 100% (517/517), 3.75 MiB | 2.21 MiB/s, done.
+Resolving deltas: 100% (249/249), done.
+Checking connectivity... done.
+</code></pre></li>
+
+<li><p>Update configuration<br />
+<em>config.toml</em> contains configuration for our site which can be overridden as we need. Default configuration looks like,</p>
+
+<pre><code>$ cat config.toml 
+baseurl = &quot;http://replace-this-with-your-hugo-site.com/&quot;
+languageCode = &quot;en-us&quot;
+title = &quot;My New Hugo Site&quot;
+</code></pre>
+
+<p>Add theme name at end <code>theme = &quot;hugo-uno&quot;</code>.</p></li>
+
+<li><p>Generate static site<br />
+As we are ready with configuration and our first post, let&rsquo;s generate site and see how does it look.</p>
+
+<pre><code>$ hugo --buildDrafts 
+Started building site
+1 of 1 draft rendered
+0 future content
+1 pages created
+0 non-page files copied
+0 paginator pages created
+0 tags created
+0 categories created
+in 86 ms
+</code></pre>
+
+<p><code>--buildDrafts</code> is needed to compile draft posts (i.e. posts which have <code>draft = 'true'</code> in their front matter).
+It generates our site and puts it <em>public</em> directory.</p>
+
+<pre><code>myblog
+|-- archetypes
+|-- config.toml
+|-- content
+|-- data
+|-- layouts
+|-- public
+|-- static
+`-- themes
+
+7 directories, 1 file
+</code></pre></li>
+
+<li><p>Preview our blog on local machine<br />
+Hugo provides its own webserver which builds and serves the site. Let&rsquo;s start server for our blog by executing below commnd in <em>myblog</em> directory. by executing below command in <em>myblog</em> directory.</p>
+
+<pre><code>$ hugo server
+Started building site
+0 draft content
+0 future content
+1 pages created
+0 non-page files copied
+7 paginator pages created
+3 tags created
+2 categories created
+in 63 ms
+Watching for changes in /home/pradip/github/myblog/{data,content,layouts,static,themes}
+Serving pages from memory
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+</code></pre>
+
+<p>Now, open <a href="http://localhost:1313/">http://localhost:1313/</a> in your browser to find your blog up and running. If you make any changes to your posts
+while server is running, it detects the changes and reloads browser to show the changes - very handy to preview your
+changes real-time.</p>
+
+<p>You can now customize blog&rsquo;s features and styling further as you wish. Read <a href="http://gohugo.io/themes/overview/">hugo theme docs</a> for more details.</p></li>
+</ul>
+
+<h3 id="2-host-your-blog-on-github">2. Host your blog on GitHub</h3>
+
+<p>Let&rsquo;s host our little blog so that we can access it on interweb. GitHub lets us host a site directly from a special repository. Head over to <a href="https://github.com/">GitHub</a> and
+  create a new repository named <em>username.github.io</em>, where username is your user name on GitHub.<br />
+  <em>If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.</em></p>
+
+<p>We will put our hugo generated blog (i.e. only contents of <em>public</em> directory from <em>myblog</em> directory) in <em>username.github.io</em>.
+  Make sure to replace <em>username</em> with your GitHub user name in below commands.</p>
+
+<pre><code>$ cd $HOME
+$ git clone https://github.com/username/username.github.io.git
+$ cp -r myblog/public/* username.github.io/
+$ cd username.github.io
+$ git add --all
+$ git commit -m'first version'
+$ git push origin master
+</code></pre>
+
+<p>You will see contents of <em>public</em> directory in your GitHub repository now. Open <a href="https://username.github.io">https://username.github.io</a> to see your blog live. Hurrah!</p>
+
+<h3 id="3-auto-deploy-your-blog-with-drone-io">3. Auto deploy your blog with Drone.io</h3>
+
+<p>We have our blog live!. What next? We will keep adding contents to this blog. For every change in blog which we want to make live,
+  we need to re-generate static site using hugo and push it to <em>username.github.io</em>. Doing it manually every time is no fun. That&rsquo;s where
+  we call <strong>C</strong>ontinuous <strong>I</strong>ntegration services to the rescue.</p>
+
+<p>There are <a href="https://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software">several CI tools</a> today,
+  I chose Drone.io as it needs minimal configuration to get the work done. Also it allows us unlimited builds for unlimited public repositories.</p>
+
+<ul>
+<li><p>Add source code to a new GitHub repository<br />
+Create a new GitHub repository with same name as our created blog i.e. <em>myblog</em>
+Source code needed for Hugo to build our blog is everything except <em>public</em> directory. So no need to upload <em>public</em> directory to <em>myblog</em> repository.
+Let&rsquo;s put it in <em>.gitignore</em> file (git ignores files/directories matching patterns in this file).</p>
+
+<pre><code>$ echo &quot;./public&quot; &gt; .gitignore
+</code></pre>
+
+<p>Also, we have cloned <em>hugo-uno</em> theme from external repository. Let&rsquo;s link that repository as submodule instead of uploading whole theme
+in our repository.</p>
+
+<pre><code>$ git submodule add https://github.com/SenjinDarashiva/hugo-uno themes/hugo-uno
+</code></pre>
+
+<p>This will create <em>.gitmodules</em> file.</p>
+
+<pre><code>$ cat .gitmodules
+[submodule &quot;themes/hugo-uno&quot;]
+path = themes/hugo-uno
+url = https://github.com/SenjinDarashiva/hugo-uno
+</code></pre>
+
+<p>We&rsquo;re ready to populate <em>myblog</em> repository.</p>
+
+<pre><code> $ git add --all
+ $ git commit -m'committing source'
+ $ git remote add origin https://github.com/username/myblog.git
+</code></pre></li>
+
+<li><p>Create build script:<br />
+Copy my build script <em>deploy.sh</em> in <em>myblog</em> directory and make it executable.</p>
+
+<pre><code>$ curl https://raw.githubusercontent.com/pradippatil/myblog/master/deploy.sh &gt; deploy.sh &amp;&amp; chmod 755 deploy.sh
+</code></pre>
+
+<p>Edit <em>deploy.sh</em> to replace username and email from below params with your username and email.</p>
+
+<pre><code>    git config user.name 
+    git config user.email
+    git remote add upstream 
+</code></pre></li>
+
+<li><p>Create a GitHub personal access token for Drone.io to push our static blog to <em>username.github.io</em> repository.
+Use <a href="https://github.com/settings/tokens/new">this url</a> and choose <em>public_repo</em> as scope.
+Copy and Paste generated token for use in next step.</p></li>
+
+<li><p>Configure build on Drone.io</p>
+
+<ul>
+<li>Register on <a href="https://drone.io/">Drone.io</a> using GitHub account.</li>
+<li>After successful registration. Select <em>New Project</em> -&gt; <em>GitHub</em> -&gt; It&rsquo;ll list all repositories, including our new <em>myblog</em> -&gt;
+Select <em>myblog</em> -&gt; Select <em>Go</em> -&gt; write <em>./deploy.sh</em> in build script window -&gt; write GH_TOKEN=&lt;<em>paste here token generated in previous stage</em>&gt; in <em>Environment Variables</em> section &ndash;&gt; Click on <em>Save</em></li>
+<li>Done!
+<br /></li>
+</ul></li>
+
+<li><p>Submit all changes to <em>myblog</em> repository.</p>
+
+<pre><code>$ git push -u origin master
+</code></pre>
+
+<p>As soon as you push the changes in <em>myblog</em> repo, Drone.io will start to build using <em>deploy.sh</em> and after successful build,
+it will push <em>public</em> directory to <em>username.github.io</em> repository. That&rsquo;s it! You can access your blog at <a href="https://username.github.io">https://username.github.io</a>.</p></li>
+</ul>
+
+<p>Yay! We&rsquo;ve just created a version controlled blog with automated deployment.
+Let me know how does it work for you in comments.</p>
+
+<p><strong>P.S.</strong> You can check source for this blog <a href="https://github.com/pradippatil/myblog"><strong>here</strong></a>.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'pradippatil';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="https://pradippatil.github.iojs/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12859140-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+
