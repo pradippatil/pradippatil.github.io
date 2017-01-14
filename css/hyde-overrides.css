@@ -2,15 +2,9 @@
  * Tweaks and overrides to hyde.css
  */
 
-html {
-    font-family: "Go"
-}
-
 .sidebar-about h1 {
     color: #fff;
     margin-top: 10;
-    font-family: "Go";
-/*  font-family: "PT Sans", Helvetica, Arial, sans-serif; */
     font-size: 2rem;
 }
 
