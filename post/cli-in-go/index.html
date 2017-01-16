@@ -5,9 +5,9 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.19-DEV" />
+  <meta name="generator" content="Hugo 0.17" />
 
-  <title>Drone.Io &middot; Pradip Mahadev Patil</title>
+  <title>Command line applications in Go &middot; Pradip Mahadev Patil</title>
 
   
   
@@ -36,8 +36,6 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 
   
-  
-  <link rel="alternate" type="application/rss+xml" title="Pradip Mahadev Patil" href="https://pradippatil.github.io/tags/drone.io/index.xml" />
   
 
   
@@ -111,10 +109,6 @@
   <div class="pure-menu social">
   <ul class="pure-menu-list">
 
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://pradippatil.github.io/tags/drone.io/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
-    </li>
     
 
     
@@ -229,23 +223,22 @@
 
 
 <div class="header">
-  <h1>Drone.Io</h1>
+  <h1>Command line applications in Go</h1>
+  <h2></h2>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://pradippatil.github.io/post/how-to-hugo/">Build a version controlled blog using Hugo, GitHub and Drone.io</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>
-    <time>Jul 20, 2016&nbsp;&nbsp;</time>
+    <time>Dec 12, 2016&nbsp;&nbsp;</time>
 
   
 
+  
+  
+  
   
 
   
@@ -253,11 +246,11 @@
   
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/hugo">hugo</a>
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/cli">cli</a>
     
-      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/githubpages">githubpages</a>
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/golang">golang</a>
     
-      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/drone.io">drone.io</a>
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/flags">flags</a>
     
   </div>
   
@@ -265,22 +258,83 @@
 
 </div>
 
-  </header>
+  
 
-  <p>
-  Content Management Systems nowdays are relatively easy to setup and install but usually overkill for static websites like many of the personal blogs. I prefer an alternative, Hugo to generate static site, GitHub Pages for version control and hosting, and Drone.io for auto deployment.
-Read below to find out how one can build a static blog/website blazingly fast using these tools.
-1. Build a static blog locally Static web pages are delivered to user exactly as stored unlike dynamic web pages which include web server processing for every request, for example, getting data from database, embedding it in configured templates and generating a HTML page to deliver to user.
-  </p>
+<p></br>
+<strong>C</strong>ommand <strong>L</strong>ine <strong>I</strong>nterface (<a href="https://en.wikipedia.org/wiki/Command-line_interface">CLI</a>) is usually a concise and powerful way to access application&rsquo;s features.
+Let&rsquo;s see how one can build a command line application using Go&rsquo;s standard library.</p>
+
+<h3 id="arguments-positional-parameters">Arguments / Positional parameters</h3>
+
+<p>Basic way of providing input to an application via command line is passing <em>arguments</em> or <em>positional parameters</em>.</p>
+
+<pre><code>var Args []string
+    Args hold the command-line arguments, starting with the program name.
+</code></pre>
+
+<h3 id="flags">Flags</h3>
+
+<h4 id="reference">Reference</h4>
+
+<p><a href="http://thenewstack.io/cli-command-line-programming-with-go/">http://thenewstack.io/cli-command-line-programming-with-go/</a><br />
+<a href="https://codegangsta.io/blog/2013/07/21/creating-cli-applications-in-go/">https://codegangsta.io/blog/2013/07/21/creating-cli-applications-in-go/</a><br />
+Using://github.com/spf13/cobra<br />
+<a href="https://golang.org/pkg/flag/">https://golang.org/pkg/flag/</a></p>
+
 
   
-  <footer>
-    <a href="https://pradippatil.github.io/post/how-to-hugo/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://pradippatil.github.io/post/how-to-hugo/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://pradippatil.github.io/post/how-to-hugo/">Build a version controlled blog using Hugo, GitHub and Drone.io</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://pradippatil.github.io/post/TODO/">TODO</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://pradippatil.github.io/post/TODO/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
 
   
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'pradippatil';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
 </div>
 
 </div>
@@ -303,3 +357,4 @@ Read below to find out how one can build a static blog/website blazingly fast us
 
 </body>
 </html>
+

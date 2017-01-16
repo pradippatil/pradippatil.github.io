@@ -1,14 +1,62 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Pradip Mahadev Patil</title>
+    <title>Post-rsses on Pradip Mahadev Patil</title>
     <link>https://pradippatil.github.io/post/index.xml</link>
-    <description>Recent content in Posts on Pradip Mahadev Patil</description>
+    <description>Recent content in Post-rsses on Pradip Mahadev Patil</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 20 Jul 2016 22:04:05 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 15 Jan 2017 18:11:21 -0500</lastBuildDate>
     <atom:link href="https://pradippatil.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>TODO</title>
+      <link>https://pradippatil.github.io/post/TODO/</link>
+      <pubDate>Sun, 15 Jan 2017 18:11:21 -0500</pubDate>
+      
+      <guid>https://pradippatil.github.io/post/TODO/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;Web Crawler&lt;/li&gt;
+&lt;li&gt;Web Scraper&lt;/li&gt;
+&lt;li&gt;Reverse Proxy&lt;/li&gt;
+&lt;li&gt;MiniProjects&lt;/li&gt;
+&lt;li&gt;Protobuf&lt;/li&gt;
+&lt;li&gt;Space usage&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Command line applications in Go</title>
+      <link>https://pradippatil.github.io/post/cli-in-go/</link>
+      <pubDate>Mon, 12 Dec 2016 19:24:48 -0500</pubDate>
+      
+      <guid>https://pradippatil.github.io/post/cli-in-go/</guid>
+      <description>
+
+&lt;p&gt;&lt;/br&gt;
+&lt;strong&gt;C&lt;/strong&gt;ommand &lt;strong&gt;L&lt;/strong&gt;ine &lt;strong&gt;I&lt;/strong&gt;nterface (&lt;a href=&#34;https://en.wikipedia.org/wiki/Command-line_interface&#34;&gt;CLI&lt;/a&gt;) is usually a concise and powerful way to access application&amp;rsquo;s features.
+Let&amp;rsquo;s see how one can build a command line application using Go&amp;rsquo;s standard library.&lt;/p&gt;
+
+&lt;h3 id=&#34;arguments-positional-parameters&#34;&gt;Arguments / Positional parameters&lt;/h3&gt;
+
+&lt;p&gt;Basic way of providing input to an application via command line is passing &lt;em&gt;arguments&lt;/em&gt; or &lt;em&gt;positional parameters&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var Args []string
+    Args hold the command-line arguments, starting with the program name.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;flags&#34;&gt;Flags&lt;/h3&gt;
+
+&lt;h4 id=&#34;reference&#34;&gt;Reference&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://thenewstack.io/cli-command-line-programming-with-go/&#34;&gt;http://thenewstack.io/cli-command-line-programming-with-go/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://codegangsta.io/blog/2013/07/21/creating-cli-applications-in-go/&#34;&gt;https://codegangsta.io/blog/2013/07/21/creating-cli-applications-in-go/&lt;/a&gt;&lt;br /&gt;
+Using://github.com/spf13/cobra&lt;br /&gt;
+&lt;a href=&#34;https://golang.org/pkg/flag/&#34;&gt;https://golang.org/pkg/flag/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Build a version controlled blog using Hugo, GitHub and Drone.io</title>
