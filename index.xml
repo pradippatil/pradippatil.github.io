@@ -11,24 +11,24 @@
     <atom:link href="https://pradippatil.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Favorites</title>
+      <title>Bookmarks</title>
       <link>https://pradippatil.github.io/favorites/</link>
       <pubDate>Sun, 18 Dec 2016 18:32:42 -0500</pubDate>
       
       <guid>https://pradippatil.github.io/favorites/</guid>
       <description>
 
-&lt;h2 id=&#34;read&#34;&gt;Read&lt;/h2&gt;
+&lt;h2 id=&#34;articles&#34;&gt;Articles&lt;/h2&gt;
 
-&lt;hr /&gt;
+&lt;h2 id=&#34;rfcs&#34;&gt;RFCs&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.topdownbook.com/rfcs.html&#34;&gt;Important network RFCs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tools.ietf.org/html/rfc6455&#34;&gt;The Websocket Protocol&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tools.ietf.org/html/rfc6455&#34;&gt;UTF-8&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;watch&#34;&gt;Watch&lt;/h2&gt;
-
-&lt;hr /&gt;
+&lt;h2 id=&#34;talks&#34;&gt;Talks&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=JEpsKnWZrJ8&#34;&gt;Grace Hopper explains Nanoseconds&lt;/a&gt;&lt;/li&gt;
