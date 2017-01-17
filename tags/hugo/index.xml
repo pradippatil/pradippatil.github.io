@@ -17,6 +17,15 @@
       <guid>https://pradippatil.github.io/post/how-to-hugo/</guid>
       <description>
 
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;div align=&#34;center&#34;&gt;&lt;a href=&#34;http://xkcd.com/741/&#34;&gt;http://xkcd.com/741/&lt;/a&gt;&lt;/div&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;http://imgs.xkcd.com/comics/blogging.png&#34; /&gt;
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
 &lt;p&gt;&lt;strong&gt;C&lt;/strong&gt;ontent &lt;strong&gt;M&lt;/strong&gt;anagement &lt;strong&gt;S&lt;/strong&gt;ystems nowdays are relatively easy to setup and install but usually overkill for static websites like many of the personal blogs.
 I prefer an alternative, &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; to generate static site, &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt;
 for version control and hosting, and &lt;a href=&#34;https://drone.io/&#34;&gt;Drone.io&lt;/a&gt; for auto deployment.&lt;/p&gt;
