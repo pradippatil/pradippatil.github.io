@@ -20,6 +20,11 @@
 
 &lt;h2 id=&#34;articles&#34;&gt;Articles&lt;/h2&gt;
 
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://lwn.net/Articles/250967/&#34;&gt;What every programmer should know about memory?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly&#34;&gt;What does O(logn) mean? - an interesting thread on SO&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
 &lt;h2 id=&#34;rfcs&#34;&gt;RFCs&lt;/h2&gt;
 
 &lt;ol&gt;
