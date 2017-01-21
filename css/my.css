@@ -117,3 +117,9 @@ time, .post-taxonomy-tag {
     border-radius: .25em;
     background-color:#fdf6e3;
 }
+
+pre {
+    overflow: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
