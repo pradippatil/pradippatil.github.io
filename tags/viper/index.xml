@@ -73,8 +73,7 @@ check &lt;a href=&#34;https://github.com/spf13/viper#working-with-multiple-viper
 &lt;p&gt;There are 2 ways to do this.&lt;br /&gt;
 Set path including config file name and extension&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;
-viper.SetConfigFile(&amp;quot;./configs/env.json&amp;quot;)
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;viper.SetConfigFile(&amp;quot;./configs/env.json&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;Or&lt;/strong&gt; Set path(s) to loook for config files in.&lt;/p&gt;
@@ -87,6 +86,7 @@ viper.AddConfigPath(&amp;quot;$HOME/configs&amp;quot;)
 viper.SetConfigName(&amp;quot;env&amp;quot;)
 // Optionally we can set specific config type
 // viper.SetConfigType(&amp;quot;json&amp;quot;)
+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;read-the-config-file-in-viper&#34;&gt;Read the config file in &lt;code&gt;viper&lt;/code&gt;&lt;/h3&gt;
@@ -153,6 +153,10 @@ if err != nil {
 fmt.Println(C.Host)
 
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;read-from-env-variables-todo&#34;&gt;Read from Env variables [TODO]&lt;/h2&gt;
+
+&lt;hr /&gt;
 
 &lt;p&gt;You can find full source of this example in &lt;a href=&#34;https://github.com/pradippatil/tutorials/tree/master/viper&#34;&gt;github repo&lt;/a&gt;&lt;/p&gt;
 

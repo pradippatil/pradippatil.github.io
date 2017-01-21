@@ -317,8 +317,7 @@ check <a href="https://github.com/spf13/viper#working-with-multiple-vipers">work
 <p>There are 2 ways to do this.<br />
 Set path including config file name and extension</p>
 
-<pre><code class="language-go">
-viper.SetConfigFile(&quot;./configs/env.json&quot;)
+<pre><code class="language-go">viper.SetConfigFile(&quot;./configs/env.json&quot;)
 </code></pre>
 
 <p><strong>Or</strong> Set path(s) to loook for config files in.</p>
@@ -331,6 +330,7 @@ viper.AddConfigPath(&quot;$HOME/configs&quot;)
 viper.SetConfigName(&quot;env&quot;)
 // Optionally we can set specific config type
 // viper.SetConfigType(&quot;json&quot;)
+
 </code></pre>
 
 <h3 id="read-the-config-file-in-viper">Read the config file in <code>viper</code></h3>
@@ -397,6 +397,10 @@ if err != nil {
 fmt.Println(C.Host)
 
 </code></pre>
+
+<h2 id="read-from-env-variables-todo">Read from Env variables [TODO]</h2>
+
+<hr />
 
 <p>You can find full source of this example in <a href="https://github.com/pradippatil/tutorials/tree/master/viper">github repo</a></p>
 
