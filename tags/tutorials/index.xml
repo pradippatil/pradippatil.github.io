@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pradip Mahadev Patil</title>
+    <link>https://pradippatil.github.io/tags/tutorials/index.xml</link>
+    <description>Recent content on Pradip Mahadev Patil</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017. All rights reserved.</copyright>
+    <atom:link href="https://pradippatil.github.io/tags/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Configuration management in Go (using Viper)</title>
+      <link>https://pradippatil.github.io/post/viper/</link>
+      <pubDate>Fri, 20 Jan 2017 23:19:36 -0500</pubDate>
+      
+      <guid>https://pradippatil.github.io/post/viper/</guid>
+      <description>
+
+&lt;p&gt;&lt;/br&gt;
+&lt;code&gt;Config&lt;/code&gt; factor from &lt;a href=&#34;https://12factor.net/config&#34;&gt;The Twelve-Factor App&lt;/a&gt; states that application&amp;rsquo;s configuration should be
+isolated from code to make configuring an app for different environments very convenient and scaling it up a breeze.&lt;/p&gt;
+
+&lt;p&gt;Configuration management for modern applications which run on so many different environment is becoming complex with advent of microservices and cloud computing.
+Not to mention dealing with several formats/markup languages to store app&amp;rsquo;s configurations.&lt;/p&gt;
+
+&lt;p&gt;This post is about one of my favorite &lt;em&gt;Go&lt;/em&gt; libraries &lt;a href=&#34;https://github.com/spf13/viper&#34;&gt;Viper&lt;/a&gt; which promises to be a complete configuration solution for &lt;em&gt;Go&lt;/em&gt; applications. Among other features, it supports (as of this writing) reading configuration from&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JSON, TOML, YAML, HCL, and Java properties config files&lt;/li&gt;
+&lt;li&gt;Environment variables&lt;/li&gt;
+&lt;li&gt;Commandline flags&lt;/li&gt;
+&lt;li&gt;Remote config systems (etcd or Consul)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let&amp;rsquo;s see how to use Viper to take advantage of some of these features.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-viper&#34;&gt;Install Viper&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go get github.com/spf13/viper
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;read-from-config-file&#34;&gt;Read from config file&lt;/h2&gt;
+
+&lt;p&gt;While it supports various file formats, we&amp;rsquo;ll use an example JSON configuration below.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;/config/env.json&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-JSON&#34;&gt;{
+    &amp;quot;prod&amp;quot;: {
+        &amp;quot;host&amp;quot;: &amp;quot;192.168.1.1&amp;quot;,
+        &amp;quot;port&amp;quot;: &amp;quot;8081&amp;quot;,
+        &amp;quot;enabled&amp;quot;: true
+    },
+    &amp;quot;dev&amp;quot;: {
+        &amp;quot;host&amp;quot;: &amp;quot;192.168.1.2&amp;quot;,
+        &amp;quot;port&amp;quot;: &amp;quot;8082&amp;quot;,
+        &amp;quot;enabled&amp;quot;: true
+    },
+    &amp;quot;qa&amp;quot;: {
+        &amp;quot;host&amp;quot;: &amp;quot;192.168.1.3&amp;quot;,
+        &amp;quot;port&amp;quot;: &amp;quot;8083&amp;quot;,
+        &amp;quot;enabled&amp;quot;: true
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: Viper does not require any initialization before using, unless we&amp;rsquo;ll be dealing multiple different configurations.
+check &lt;a href=&#34;https://github.com/spf13/viper#working-with-multiple-vipers&#34;&gt;working with multiple vipers&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;set-config-file-we-want-to-read&#34;&gt;Set config file we want to read.&lt;/h3&gt;
+
+&lt;p&gt;There are 2 ways to do this.&lt;br /&gt;
+Set path including config file name and extension&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;
+viper.SetConfigFile(&amp;quot;./configs/env.json&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Or&lt;/strong&gt; Set path(s) to loook for config files in.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;
+// Add paths. Accepts multiple paths. It will search these paths in given order
+viper.AddConfigPath(&amp;quot;./configs&amp;quot;)
+viper.AddConfigPath(&amp;quot;$HOME/configs&amp;quot;)
+// And then register config file name (no extension)
+viper.SetConfigName(&amp;quot;env&amp;quot;)
+// Optionally we can set specific config type
+// viper.SetConfigType(&amp;quot;json&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;read-the-config-file-in-viper&#34;&gt;Read the config file in &lt;code&gt;viper&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;
+// Searches for config file in given paths and read it
+if err := viper.ReadInConfig(); err != nil {
+    log.Fatalf(&amp;quot;Error reading config file, %s&amp;quot;, err)
+}
+
+// Confirm which config file is used
+fmt.Printf(&amp;quot;Using config: %s\n&amp;quot;, viper.ConfigFileUsed())
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;get-values-from-viper&#34;&gt;Get values from &lt;code&gt;viper&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://godoc.org/github.com/spf13/viper#Get&#34;&gt;Get&lt;/a&gt; method
+can retrieve any value given the key (case-insensitive) to use.
+Get returns an interface. For a specific value use one of the Get____ methods (e.g. GetInt, GetBool etc)&lt;/p&gt;
+
+&lt;!-- TODO Get has the behavior of returning the value associated with the first place from where it is set.
+Viper will check in the following order: override, flag, env, config file, key/value store, default
+--&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;
+port := viper.Get(&amp;quot;prod.port&amp;quot;) // returns string 
+//port := viper.GetInt(&amp;quot;prod.port&amp;quot;) // returns integer
+fmt.Printf(&amp;quot;Value: %v, Type: %T\n&amp;quot;, port, port)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;check-if-a-particular-key-is-set-using-isset&#34;&gt;Check if a particular key is set using &lt;code&gt;IsSet&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Notice that we can trverse nested configuration using a &lt;code&gt;.&lt;/code&gt; delimited path  e.g. prod.port&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;
+if !viper.IsSet(&amp;quot;prod.port&amp;quot;) {
+    log.Fatal(&amp;quot;missing port number&amp;quot;)
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;read-values-in-struct&#34;&gt;Read values in &lt;code&gt;struct&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Instead of reading keys one by one we can extract sub-tree using &lt;code&gt;Sub&lt;/code&gt; and decode it in struct using &lt;code&gt;Unmarshal&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;
+prod := viper.Sub(&amp;quot;prod&amp;quot;)
+
+// Unmarshal into struct. Struct fields should match keys from config (case in-sensitive)
+type config struct {
+    Host    string
+    Port    int
+    enabled bool
+}
+
+var C config
+
+err := prod.Unmarshal(&amp;amp;C)
+if err != nil {
+    log.Fatalf(&amp;quot;unable to decode into struct, %v&amp;quot;, err)
+}
+fmt.Println(C.Host)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can find full source of this example in &lt;a href=&#34;https://github.com/pradippatil/tutorials/tree/master/viper&#34;&gt;github repo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This post gives just a glimpse of Viper&amp;rsquo;s capabilities. It&amp;rsquo;s worth exploring some of the interesting things it offers like,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/viper#watching-and-re-reading-config-files&#34;&gt;Watching and re-reading config files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/viper#reading-config-from-ioreader&#34;&gt;Reading from buffer/ioreader&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/viper#remote-keyvalue-store-support&#34;&gt;Reading from remote key value store&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/viper#registering-and-using-aliases&#34;&gt;Alias for values&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.17" />
+
+  <title>Configuration management in Go (using Viper) &middot; Pradip Mahadev Patil</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://pradippatil.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://pradippatil.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://pradippatil.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/github.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/go.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://pradippatil.github.io/img/favicon.png" type="image/x-icon" />
+
+  
+    <link rel="stylesheet" href="https://pradippatil.github.io/css/my.css">
+  
+  
+    <script src="https://pradippatil.github.io/js/my.js"></script>
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  <a class="pure-menu-heading brand" href="https://pradippatil.github.io/">
+  <img src="https://pradippatil.github.io/img/logo.png" width="100px">
+</a>
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://pradippatil.github.io/post/"><i class='fa fa-list' aria-hidden='true'></i> Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://pradippatil.github.io/projects/"><i class='fa fa-folder-o' aria-hidden='true'></i> Projects</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://stackoverflow.com/story/pradippatil"><i class='fa fa-user'></i> About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://pradippatil.github.io/favorites/"><i class='fa fa-bookmark-o' aria-hidden='true'></i> Bookmarks</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://pradippatil.github.io/tags/"><i class='fa fa-tags fa-fw'></i>Tags</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/pradip__patil" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/pradip86" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/pradippatil" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/3781709/pradip" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+    <a class="pure-menu-link" href="https://www.goodreads.com/pradipatil" target="_blank">
+    <i><span style="font-family:helvetica;font-size:18px">g</span> </i> Goodreads</a>
+    </li>
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2017. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Configuration management in Go (using Viper)</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>
+    <time>Jan 20, 2017&nbsp;&nbsp;</time>
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/go">go</a>
+    
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/viper">viper</a>
+    
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/tutorials">tutorials</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p></br>
+<code>Config</code> factor from <a href="https://12factor.net/config">The Twelve-Factor App</a> states that application&rsquo;s configuration should be
+isolated from code to make configuring an app for different environments very convenient and scaling it up a breeze.</p>
+
+<p>Configuration management for modern applications which run on so many different environment is becoming complex with advent of microservices and cloud computing.
+Not to mention dealing with several formats/markup languages to store app&rsquo;s configurations.</p>
+
+<p>This post is about one of my favorite <em>Go</em> libraries <a href="https://github.com/spf13/viper">Viper</a> which promises to be a complete configuration solution for <em>Go</em> applications. Among other features, it supports (as of this writing) reading configuration from</p>
+
+<ul>
+<li>JSON, TOML, YAML, HCL, and Java properties config files</li>
+<li>Environment variables</li>
+<li>Commandline flags</li>
+<li>Remote config systems (etcd or Consul)</li>
+</ul>
+
+<p>Let&rsquo;s see how to use Viper to take advantage of some of these features.</p>
+
+<h2 id="install-viper">Install Viper</h2>
+
+<pre><code class="language-bash">go get github.com/spf13/viper
+</code></pre>
+
+<h2 id="read-from-config-file">Read from config file</h2>
+
+<p>While it supports various file formats, we&rsquo;ll use an example JSON configuration below.</p>
+
+<p><code>/config/env.json</code></p>
+
+<pre><code class="language-JSON">{
+    &quot;prod&quot;: {
+        &quot;host&quot;: &quot;192.168.1.1&quot;,
+        &quot;port&quot;: &quot;8081&quot;,
+        &quot;enabled&quot;: true
+    },
+    &quot;dev&quot;: {
+        &quot;host&quot;: &quot;192.168.1.2&quot;,
+        &quot;port&quot;: &quot;8082&quot;,
+        &quot;enabled&quot;: true
+    },
+    &quot;qa&quot;: {
+        &quot;host&quot;: &quot;192.168.1.3&quot;,
+        &quot;port&quot;: &quot;8083&quot;,
+        &quot;enabled&quot;: true
+    }
+}
+</code></pre>
+
+<p>Note: Viper does not require any initialization before using, unless we&rsquo;ll be dealing multiple different configurations.
+check <a href="https://github.com/spf13/viper#working-with-multiple-vipers">working with multiple vipers</a></p>
+
+<h3 id="set-config-file-we-want-to-read">Set config file we want to read.</h3>
+
+<p>There are 2 ways to do this.<br />
+Set path including config file name and extension</p>
+
+<pre><code class="language-go">
+viper.SetConfigFile(&quot;./configs/env.json&quot;)
+</code></pre>
+
+<p><strong>Or</strong> Set path(s) to loook for config files in.</p>
+
+<pre><code class="language-go">
+// Add paths. Accepts multiple paths. It will search these paths in given order
+viper.AddConfigPath(&quot;./configs&quot;)
+viper.AddConfigPath(&quot;$HOME/configs&quot;)
+// And then register config file name (no extension)
+viper.SetConfigName(&quot;env&quot;)
+// Optionally we can set specific config type
+// viper.SetConfigType(&quot;json&quot;)
+</code></pre>
+
+<h3 id="read-the-config-file-in-viper">Read the config file in <code>viper</code></h3>
+
+<pre><code class="language-go">
+// Searches for config file in given paths and read it
+if err := viper.ReadInConfig(); err != nil {
+    log.Fatalf(&quot;Error reading config file, %s&quot;, err)
+}
+
+// Confirm which config file is used
+fmt.Printf(&quot;Using config: %s\n&quot;, viper.ConfigFileUsed())
+
+</code></pre>
+
+<h3 id="get-values-from-viper">Get values from <code>viper</code></h3>
+
+<p><a href="https://godoc.org/github.com/spf13/viper#Get">Get</a> method
+can retrieve any value given the key (case-insensitive) to use.
+Get returns an interface. For a specific value use one of the Get____ methods (e.g. GetInt, GetBool etc)</p>
+
+<!-- TODO Get has the behavior of returning the value associated with the first place from where it is set.
+Viper will check in the following order: override, flag, env, config file, key/value store, default
+-->
+
+<pre><code class="language-go">
+port := viper.Get(&quot;prod.port&quot;) // returns string 
+//port := viper.GetInt(&quot;prod.port&quot;) // returns integer
+fmt.Printf(&quot;Value: %v, Type: %T\n&quot;, port, port)
+
+</code></pre>
+
+<h3 id="check-if-a-particular-key-is-set-using-isset">Check if a particular key is set using <code>IsSet</code></h3>
+
+<p>Notice that we can trverse nested configuration using a <code>.</code> delimited path  e.g. prod.port</p>
+
+<pre><code class="language-go">
+if !viper.IsSet(&quot;prod.port&quot;) {
+    log.Fatal(&quot;missing port number&quot;)
+}
+
+</code></pre>
+
+<h3 id="read-values-in-struct">Read values in <code>struct</code></h3>
+
+<p>Instead of reading keys one by one we can extract sub-tree using <code>Sub</code> and decode it in struct using <code>Unmarshal</code></p>
+
+<pre><code class="language-go">
+prod := viper.Sub(&quot;prod&quot;)
+
+// Unmarshal into struct. Struct fields should match keys from config (case in-sensitive)
+type config struct {
+    Host    string
+    Port    int
+    enabled bool
+}
+
+var C config
+
+err := prod.Unmarshal(&amp;C)
+if err != nil {
+    log.Fatalf(&quot;unable to decode into struct, %v&quot;, err)
+}
+fmt.Println(C.Host)
+
+</code></pre>
+
+<p>You can find full source of this example in <a href="https://github.com/pradippatil/tutorials/tree/master/viper">github repo</a></p>
+
+<p>This post gives just a glimpse of Viper&rsquo;s capabilities. It&rsquo;s worth exploring some of the interesting things it offers like,</p>
+
+<ul>
+<li><a href="https://github.com/spf13/viper#watching-and-re-reading-config-files">Watching and re-reading config files</a></li>
+<li><a href="https://github.com/spf13/viper#reading-config-from-ioreader">Reading from buffer/ioreader</a></li>
+<li><a href="https://github.com/spf13/viper#remote-keyvalue-store-support">Reading from remote key value store</a></li>
+<li><a href="https://github.com/spf13/viper#registering-and-using-aliases">Alias for values</a></li>
+</ul>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://pradippatil.github.io/post/how-to-hugo/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://pradippatil.github.io/post/how-to-hugo/">Build a version controlled blog using Hugo, GitHub and Drone.io</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'pradippatil';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="https://pradippatil.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12859140-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+
