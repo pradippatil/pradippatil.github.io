@@ -233,7 +233,7 @@
 
   <div>
     <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>
-    <time>Jan 20, 2017&nbsp;&nbsp;</time>
+    <time>Jan 14, 2017&nbsp;&nbsp;</time>
 
   
 
@@ -365,14 +365,14 @@ fmt.Printf(&quot;Value: %v, Type: %T\n&quot;, port, port)
 
 <h3 id="check-if-a-particular-key-is-set-using-isset">Check if a particular key is set using <code>IsSet</code></h3>
 
-<p>Notice that we can trverse nested configuration using a <code>.</code> delimited path  e.g. prod.port</p>
-
 <pre><code class="language-go">
 if !viper.IsSet(&quot;prod.port&quot;) {
     log.Fatal(&quot;missing port number&quot;)
 }
 
 </code></pre>
+
+<p>Notice that we can trverse nested configuration using a <code>.</code> delimited path  e.g. prod.port</p>
 
 <h3 id="read-values-in-struct">Read values in <code>struct</code></h3>
 

@@ -12,7 +12,7 @@
     <item>
       <title>Configuration management in Go (using Viper)</title>
       <link>https://pradippatil.github.io/post/viper/</link>
-      <pubDate>Fri, 20 Jan 2017 23:19:36 -0500</pubDate>
+      <pubDate>Sat, 14 Jan 2017 23:19:36 -0500</pubDate>
       
       <guid>https://pradippatil.github.io/post/viper/</guid>
       <description>
@@ -121,14 +121,14 @@ fmt.Printf(&amp;quot;Value: %v, Type: %T\n&amp;quot;, port, port)
 
 &lt;h3 id=&#34;check-if-a-particular-key-is-set-using-isset&#34;&gt;Check if a particular key is set using &lt;code&gt;IsSet&lt;/code&gt;&lt;/h3&gt;
 
-&lt;p&gt;Notice that we can trverse nested configuration using a &lt;code&gt;.&lt;/code&gt; delimited path  e.g. prod.port&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;
 if !viper.IsSet(&amp;quot;prod.port&amp;quot;) {
     log.Fatal(&amp;quot;missing port number&amp;quot;)
 }
 
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that we can trverse nested configuration using a &lt;code&gt;.&lt;/code&gt; delimited path  e.g. prod.port&lt;/p&gt;
 
 &lt;h3 id=&#34;read-values-in-struct&#34;&gt;Read values in &lt;code&gt;struct&lt;/code&gt;&lt;/h3&gt;
 
