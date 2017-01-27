@@ -25,7 +25,7 @@ isolated from code to make configuring an app for different environments very co
 &lt;p&gt;Configuration management for modern applications which run on so many different environment is becoming complex with advent of microservices and cloud computing.
 Not to mention dealing with several formats/markup languages to store app&amp;rsquo;s configurations.&lt;/p&gt;
 
-&lt;p&gt;This post is about one of my favorite &lt;em&gt;Go&lt;/em&gt; libraries &lt;a href=&#34;https://github.com/spf13/viper&#34;&gt;Viper&lt;/a&gt; which promises to be a complete configuration solution for &lt;em&gt;Go&lt;/em&gt; applications. Among other features, it supports (as of this writing) reading configuration from&lt;/p&gt;
+&lt;p&gt;This post is about one of my favorite &lt;em&gt;Go&lt;/em&gt; libraries &lt;a href=&#34;https://github.com/spf13/viper&#34;&gt;Viper&lt;/a&gt; which claims to be a complete configuration solution for &lt;em&gt;Go&lt;/em&gt; applications. Among other features, it supports (as of this writing) reading configuration from&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;JSON, TOML, YAML, HCL, and Java properties config files&lt;/li&gt;
