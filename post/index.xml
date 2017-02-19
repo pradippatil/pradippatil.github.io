@@ -106,7 +106,7 @@ sudo imagewriter
 &lt;p&gt;We&amp;rsquo;ve already enabled SSH and WiFi on Raspbian so that we can access it remotely from computer.&lt;br /&gt;
 Insert SD/microSD card in Raspberry Pi.
 Make sure WiFi adapter is plugged in (not required for Raspberry Pi 3) and plug the power cable.
-While booting up, it&amp;rsquo;ll connect to your local network over WiFi with given credentials in step #2.&lt;/p&gt;
+While booting up, it&amp;rsquo;ll connect to your local network over WiFi with given credentials in previous step.&lt;/p&gt;
 
 &lt;p&gt;In order to connect to your Raspberry Pi using SSH we need to know the Pi&amp;rsquo;s IP address.
 Thanks to &lt;a href=&#34;https://en.wikipedia.org/wiki/Avahi_(software)&#34;&gt;Avahi&lt;/a&gt; auto service discovery implementation which is installed by default on debian and ubuntu systems, we can use &lt;code&gt;raspberrypi.local&lt;/code&gt; to address our Raspberry Pi (without worrying about it&amp;rsquo;s IP which can be changed by DHCP every time we will reboot/reconnect)&lt;/p&gt;
@@ -128,11 +128,11 @@ Let’s update it.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Here&amp;rsquo;s my &lt;strong&gt;Headless RPi&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s it. You can now access your RPi with any device having a utility to SSH. Here&amp;rsquo;s my RPi with phone as head.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://pradippatil.github.io/img/rpi_final.png&#34; alt=&#34;myRPi&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;See next section to do more with your RPi. &lt;strong&gt;Have a hap&lt;code&gt;Pi&lt;/code&gt; journey! :)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Next section describes some more interesting things you can to do with your RPi. &lt;strong&gt;Have a hap&lt;code&gt;Pi&lt;/code&gt; journey! :)&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;/br&gt;&lt;/p&gt;
 
