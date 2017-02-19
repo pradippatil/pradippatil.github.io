@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.17" />
 
-  <title>Configuration management in Go (using Viper) &middot; Pradip Mahadev Patil</title>
+  <title>Headless Raspberry Pi &middot; Pradip Mahadev Patil</title>
 
   
   
@@ -224,7 +224,7 @@
 
 
 <div class="header">
-  <h1>Configuration management in Go (using Viper)</h1>
+  <h1>Headless Raspberry Pi</h1>
   <h2></h2>
 </div>
 <div class="content">
@@ -233,7 +233,7 @@
 
   <div>
     <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>
-    <time>Jan 14, 2017&nbsp;&nbsp;</time>
+    <time>Feb 17, 2017&nbsp;&nbsp;</time>
 
   
 
@@ -247,11 +247,9 @@
   
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/golang">golang</a>
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/raspberrypi">raspberrypi</a>
     
-      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/viper">viper</a>
-    
-      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/tutorials">tutorials</a>
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/raspbian">raspbian</a>
     
   </div>
   
@@ -261,170 +259,147 @@
 
   
 
-<p></br>
-<code>Config</code> factor from <a href="https://12factor.net/config">The Twelve-Factor App</a> states that application&rsquo;s configuration should be
-isolated from code to make configuring an app for different environments very convenient and scaling it up a breeze.</p>
+<p></br></p>
 
-<p>Configuration management for modern applications which run on so many different environment is becoming complex with advent of microservices and cloud computing.
-Not to mention dealing with several formats/markup languages to store app&rsquo;s configurations.</p>
+<p>This post explains how to configure <a href="https://www.raspberrypi.org/products/">Raspberry Pi</a> for headless mode (with no monitor and keyboard/mouse of its own).</p>
 
-<p>This post is about one of my favorite <em>Go</em> libraries <a href="https://github.com/spf13/viper">Viper</a> which claims to be a complete configuration solution for <em>Go</em> applications. Among other features, it supports (as of this writing) reading configuration from</p>
+<p></br></p>
 
-<ul>
-<li>JSON, TOML, YAML, HCL, and Java properties config files</li>
-<li>Environment variables</li>
-<li>Commandline flags</li>
-<li>Remote config systems (etcd or Consul)</li>
-</ul>
+<h3 id="things-we-need">Things we need</h3>
 
-<p>Let&rsquo;s see how to use Viper to take advantage of some of these features.</p>
+<ol>
+<li>Raspberry Pi</li>
+<li>SD / microSD card (4GB+)</li>
+<li>USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt)</li>
+<li>USB power cable</li>
+<li>A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection)</li>
+<li>Internet connection</li>
+</ol>
 
-<h2 id="install-viper">Install Viper</h2>
+<p><img src="https://pradippatil.github.io/img/rpi_components.png" alt="Components" /></p>
 
-<pre><code class="language-bash">go get github.com/spf13/viper
+<p></br></p>
+
+<h3 id="download-os-image-for-raspberry-pi">Download OS image for Raspberry Pi</h3>
+
+<p><strong>Raspbian</strong> is the Foundation’s official supported operating system which comes in 2 flavours:</p>
+
+<ol>
+<li><code>RASPBIAN JESSIE WITH PIXEL</code> - Full image which includes a new desktop environment called PIXEL (Pi Improved Xwindows Environment Lightweight) and many pre-installed applications.</li>
+<li><code>RASPBIAN JESSIE LITE</code> - Minimal image which doesn&rsquo;t include desktop environment and includes core packages. <em>Ideal for headless mode</em></li>
+</ol>
+
+<p>Let&rsquo;s use minimal version <code>RASPBIAN JESSIE LITE</code>.<br />
+Download from : <a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a> and extract it.</p>
+
+<p><img src="https://pradippatil.github.io/img/raspbian.png" alt="Raspbian" /></p>
+
+<p></br></p>
+
+<h3 id="install-raspbian-image-on-sd-microsd">Install Raspbian image on SD / microSD</h3>
+
+<p>(I am doing this on my Ubuntu laptop. Check <a href="http://elinux.org/RPi_Easy_SD_Card_Setup">this url</a> for other OS/methods)</p>
+
+<p>Insert SD/microSD into computer using USB Card reader or SD card slot and burn Raspbian Lite image using <a href="https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/">ImageWriter</a>.</p>
+
+<pre><code class="language-bash">sudo apt-get install usb-imagewriter # install ImageWriter if you don't have it 
+sudo imagewriter
 </code></pre>
 
-<h2 id="read-from-config-file">Read from config file</h2>
+<p><img src="https://pradippatil.github.io/img/imagewriter_0.png" alt="ImageWriter" /></p>
 
-<p>While it supports various file formats, we&rsquo;ll use an example JSON configuration below.</p>
+<p>After successful completion Raspbian should be ready to use.</p>
 
-<p><code>/config/env.json</code></p>
+<p></br></p>
 
-<pre><code class="language-JSON">{
-    &quot;prod&quot;: {
-        &quot;host&quot;: &quot;192.168.1.1&quot;,
-        &quot;port&quot;: &quot;8081&quot;,
-        &quot;enabled&quot;: true
-    },
-    &quot;dev&quot;: {
-        &quot;host&quot;: &quot;192.168.1.2&quot;,
-        &quot;port&quot;: &quot;8082&quot;,
-        &quot;enabled&quot;: true
-    },
-    &quot;qa&quot;: {
-        &quot;host&quot;: &quot;192.168.1.3&quot;,
-        &quot;port&quot;: &quot;8083&quot;,
-        &quot;enabled&quot;: true
-    }
+<h3 id="enable-ssh-in-newly-installed-raspbian">Enable SSH in newly installed Raspbian</h3>
+
+<p>SSH is disabled by default in Raspbian. To enable it create an empty file with name &ldquo;ssh&rdquo; in <em>boot</em> partition</p>
+
+<pre><code class="language-bash">% cd /path/to/sd/card/boot # note that we have to create it in boot 
+% cat /dev/null &gt; ssh  # blank file
+</code></pre>
+
+<p></br></p>
+
+<h3 id="configure-wifi-connection">Configure WiFi connection</h3>
+
+<p>Edit <code>wpa_supplicant.conf</code> configuration file from sd card using root access</p>
+
+<pre><code class="language-bash">% cd /path/to/sd/card/
+% sudo vim etc/wpa_supplicant/wpa_supplicant.conf # use sudo
+</code></pre>
+
+<p>And put your wifi credentials in below format at the end</p>
+
+<pre><code>network={
+    ssid=&quot;your_wifi_ssid&quot;
+    psk=&quot;your_wifi_password&quot;
 }
 </code></pre>
 
-<p>Note: Viper does not require any initialization before using, unless we&rsquo;ll be dealing multiple different configurations.
-check <a href="https://github.com/spf13/viper#working-with-multiple-vipers">working with multiple vipers</a></p>
+<p>Save file and exit.</p>
 
-<h3 id="set-config-file-we-want-to-read">Set config file we want to read.</h3>
+<p></br></p>
 
-<p>There are 2 ways to do this.<br />
-Set path including config file name and extension</p>
+<h3 id="access-raspberry-pi-remotely-over-wifi-using-ssh">Access Raspberry Pi remotely over WiFi (using SSH)</h3>
 
-<pre><code class="language-go">viper.SetConfigFile(&quot;./configs/env.json&quot;)
+<p>We&rsquo;ve already enabled SSH and WiFi on Raspbian so that we can access it remotely from computer.<br />
+Insert SD/microSD card in Raspberry Pi.
+Make sure WiFi adapter is plugged in (not required for Raspberry Pi 3) and plug the power cable.
+While booting up, it&rsquo;ll connect to your local network over WiFi with given credentials in step #2.</p>
+
+<p>In order to connect to your Raspberry Pi using SSH we need to know the Pi&rsquo;s IP address.
+Thanks to <a href="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</a> auto service discovery implementation which is installed by default on debian and ubuntu systems, we can use <code>raspberrypi.local</code> to address our Raspberry Pi (without worrying about it&rsquo;s IP which can be changed by DHCP every time we will reboot/reconnect)</p>
+
+<p>Default login credentials for Raspbian are:</p>
+
+<pre><code class="language-bash">username: pi
+password: raspberry
 </code></pre>
 
-<p><strong>Or</strong> Set path(s) to loook for config files in.</p>
+<p>Open terminal (use <a href="http://www.putty.org/">PuTTY</a> on Windows) and ssh using user <code>pi</code></p>
 
-<pre><code class="language-go">
-// Add paths. Accepts multiple paths. It will search these paths in given order
-viper.AddConfigPath(&quot;./configs&quot;)
-viper.AddConfigPath(&quot;$HOME/configs&quot;)
-// And then register config file name (no extension)
-viper.SetConfigName(&quot;env&quot;)
-// Optionally we can set specific config type
-// viper.SetConfigType(&quot;json&quot;)
-
+<pre><code class="language-bash">ssh pi@raspberrypi.local
 </code></pre>
 
-<h3 id="read-the-config-file-in-viper">Read the config file in <code>viper</code></h3>
+<p>After entering password succesfully it will land you in Raspberry Pi.
+Let’s update it.</p>
 
-<pre><code class="language-go">
-// Searches for config file in given paths and read it
-if err := viper.ReadInConfig(); err != nil {
-    log.Fatalf(&quot;Error reading config file, %s&quot;, err)
-}
-
-// Confirm which config file is used
-fmt.Printf(&quot;Using config: %s\n&quot;, viper.ConfigFileUsed())
-
+<pre><code class="language-bash">sudo apt-get update &amp;&amp; sudo apt-get upgrade
 </code></pre>
 
-<h3 id="get-values-from-viper">Get values from <code>viper</code></h3>
+<p>Here&rsquo;s my <strong>Headless RPi</strong>.</p>
 
-<p><a href="https://godoc.org/github.com/spf13/viper#Get">Get</a> method
-can retrieve any value given the key (case-insensitive) to use.
-Get returns an interface. For a specific value use one of the Get____ methods (e.g. GetInt, GetBool etc)</p>
+<p><img src="https://pradippatil.github.io/img/rpi_final.png" alt="myRPi" /></p>
 
-<!-- TODO Get has the behavior of returning the value associated with the first place from where it is set.
-Viper will check in the following order: override, flag, env, config file, key/value store, default
--->
+<p>See next section to do more with your RPi. <strong>Have a hap<code>Pi</code> journey! :)</strong></p>
 
-<pre><code class="language-go">
-port := viper.Get(&quot;prod.port&quot;) // returns string 
-//port := viper.GetInt(&quot;prod.port&quot;) // returns integer
-fmt.Printf(&quot;Value: %v, Type: %T\n&quot;, port, port)
+<p></br></p>
 
-</code></pre>
+<h4 id="further-reading">Further reading:</h4>
 
-<h3 id="check-if-a-particular-key-is-set-using-isset">Check if a particular key is set using <code>IsSet</code></h3>
-
-<pre><code class="language-go">
-if !viper.IsSet(&quot;prod.port&quot;) {
-    log.Fatal(&quot;missing port number&quot;)
-}
-
-</code></pre>
-
-<p>Notice that we can trverse nested configuration using a <code>.</code> delimited path  e.g. prod.port</p>
-
-<h3 id="read-values-in-struct">Read values in <code>struct</code></h3>
-
-<p>Instead of reading keys one by one we can extract sub-tree using <code>Sub</code> and decode it in struct using <code>Unmarshal</code></p>
-
-<pre><code class="language-go">
-prod := viper.Sub(&quot;prod&quot;)
-
-// Unmarshal into struct. Struct fields should match keys from config (case in-sensitive)
-type config struct {
-    Host    string
-    Port    int
-    enabled bool
-}
-
-var C config
-
-err := prod.Unmarshal(&amp;C)
-if err != nil {
-    log.Fatalf(&quot;unable to decode into struct, %v&quot;, err)
-}
-fmt.Println(C.Host)
-
-</code></pre>
-
-<h2 id="read-from-env-variables-todo">Read from Env variables [TODO]</h2>
-
-<hr />
-
-<p>You can find full source of this example in <a href="https://github.com/pradippatil/tutorials/tree/master/viper">github repo</a></p>
-
-<p>This post gives just a glimpse of Viper&rsquo;s capabilities. It&rsquo;s worth exploring some of the interesting things it offers like,</p>
-
-<ul>
-<li><a href="https://github.com/spf13/viper#watching-and-re-reading-config-files">Watching and re-reading config files</a></li>
-<li><a href="https://github.com/spf13/viper#reading-config-from-ioreader">Reading from buffer/ioreader</a></li>
-<li><a href="https://github.com/spf13/viper#remote-keyvalue-store-support">Reading from remote key value store</a></li>
-<li><a href="https://github.com/spf13/viper#registering-and-using-aliases">Alias for values</a></li>
-</ul>
+<ol>
+<li>In case you are not able ssh using <code>raspberrypi.local</code>, find Pi&rsquo;s IP address and use it instead. Check <a href="https://www.raspberrypi.org/documentation/remote-access/ip-address.md">here</a>.</li>
+<li>Use <a href="https://www.raspberrypi.org/documentation/configuration/raspi-config.md">raspi-config</a> - Raspberry Pi configuration tool in Raspbian that allows you to easily enable features such as the camera, and change your specific settings such as keyboard layout.</li>
+<li>Setup <a href="http://www.raspberry-pi-geek.com/Archive/2015/09/Making-your-projects-more-reliable">Watchdog</a> which automatically restarts RPi if it becomes unresponsive - helpful to make your projects more reliable.</li>
+<li>Install <a href="https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04">Fail2ban</a> which bans IPs that show the malicious signs of incorrect authentications attempts.</li>
+<li>Although Raspbian Lite doesn&rsquo;t include GUI by default, we can easily install one and access Raspbian via GUI. Follow this guide - <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=66&amp;t=133691">Raspbian Lite with PIXEL/LXDE/XFCE/MATE/Openbox GUI</a></li>
+<li>Access Raspberry Pi over <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/">VNC</a></li>
+</ol>
 
 
   
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://pradippatil.github.io/post/how-to-hugo/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://pradippatil.github.io/post/viper/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://pradippatil.github.io/post/how-to-hugo/">Build a version controlled blog using Hugo, GitHub and Drone.io</a>
+      <a href="https://pradippatil.github.io/post/viper/">Configuration management in Go (using Viper)</a>
     </nav>
     
   </div>
@@ -433,14 +408,8 @@ fmt.Println(C.Host)
   </div>
   <div class="pure-u-10-24">
     
-    <nav class="next">
-      <a href="https://pradippatil.github.io/post/raspberrypi-headless/">Headless Raspberry Pi</a>
-    </nav>
-    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://pradippatil.github.io/post/raspberrypi-headless/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
