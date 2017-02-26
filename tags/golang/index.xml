@@ -55,7 +55,16 @@ go version go1.8 linux/arm
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Sweet!&lt;br /&gt;
-Now follow &lt;a href=&#34;https://golang.org/doc/install#testing&#34;&gt;this guide&lt;/a&gt; to test the new installation by building &amp;lsquo;Hello World!&amp;rsquo; program.&lt;/p&gt;
+Follow &lt;a href=&#34;https://golang.org/doc/install#testing&#34;&gt;this guide&lt;/a&gt; to test the new installation by building &amp;lsquo;Hello World!&amp;rsquo; program.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br /&gt;
+You will soon be installing external libraries/packages using &lt;code&gt;go get&lt;/code&gt;.
+The go get fetching of source code is done by using one of the tools mentioned here: &lt;a href=&#34;https://github.com/golang/go/wiki/GoGetTools&#34;&gt;https://github.com/golang/go/wiki/GoGetTools&lt;/a&gt;
+and it is expected to be found on your system. I installed &lt;strong&gt;git&lt;/strong&gt; from that list using below command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Using apt-get, since I have `Raspbian` installed on my RPi
+$ sudo apt-get install git 
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;/br&gt;&lt;/p&gt;
 </description>
