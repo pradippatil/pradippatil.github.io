@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.17" />
 
-  <title>Raspberrypi &middot; Pradip Mahadev Patil</title>
+  <title>Install Go on Raspberry Pi &middot; Pradip Mahadev Patil</title>
 
   
   
@@ -36,8 +36,6 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway|Open+Sans" rel="stylesheet" type="text/css">
 
   
-  
-  <link rel="alternate" type="application/rss+xml" title="Pradip Mahadev Patil" href="https://pradippatil.github.io/tags/raspberrypi/index.xml" />
   
 
   
@@ -112,10 +110,6 @@
   <div class="pure-menu social">
   <ul class="pure-menu-list">
 
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://pradippatil.github.io/tags/raspberrypi/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
-    </li>
     
 
     
@@ -230,16 +224,12 @@
 
 
 <div class="header">
-  <h1>Raspberrypi</h1>
+  <h1>Install Go on Raspberry Pi</h1>
+  <h2></h2>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://pradippatil.github.io/post/golang-on-rpi/">Install Go on Raspberry Pi</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>
@@ -267,72 +257,98 @@
 
 </div>
 
-  </header>
+  <p></br></p>
 
-  <p>
-  Go Programming language is becoming popular in IoT sphere as well. I am very fascinated by Go powered robotics/IoT framework Gobot and planning to play with it using my RPi.
-This post explains how to install Go on Raspberry Pi.
-My RPi (2 Model B) shows it has ARMv7 processor.
-$ uname -m armv7l  Go&rsquo;s current stable version 1.8 has official ARMv6 build available for download
-Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1.
-  </p>
+<p><a href="https://golang.org/">Go Programming language</a> is becoming popular in IoT sphere as well.
+I am very fascinated by Go powered robotics/IoT framework <a href="https://gobot.io/">Gobot</a> and planning to play with it using my <a href="https://pradippatil.github.io/post/raspberrypi-headless">RPi</a>.</p>
+
+<p>This post explains how to install Go on Raspberry Pi.</p>
+
+<p>My RPi <code>(2 Model B)</code> shows it has ARMv7 processor.</p>
+
+<pre><code class="language-xml">$ uname -m
+armv7l
+</code></pre>
+
+<p>Go&rsquo;s current stable version 1.8 has official ARMv6 build available for <a href="https://golang.org/dl/">download</a><br />
+Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1.8 ARMv6 build and <a href="https://golang.org/doc/install">install</a> it.</p>
+
+<p><img src="https://pradippatil.github.io/img/go-armv6.png" alt="download go" /></p>
+
+<pre><code class="language-bash"># Download archive
+$ wget https://storage.googleapis.com/golang/go1.8.linux-armv6l.tar.gz 
+
+# Extract it into /usr/local. It will create a Go tree in /usr/local/go
+$ sudo tar -C /usr/local -xzf go1.8.linux-armv6l.tar.gz 
+
+# Add /usr/local/go/bin to the PATH environment variable. 
+# You can do this by adding a line to your /etc/profile 
+# (for a system-wide installation) or $HOME/.profile as shown below
+$ echo 'export PATH=$PATH:/usr/local/go/bin' &gt;&gt; $HOME/.profile 
+
+# Above PATH setting will work when we re-login. Export it in current session as well.
+$ export PATH=$PATH:/usr/local/go/bin
+</code></pre>
+
+<p>If all above steps worked fine, you will be able to execute <code>go</code> commands. Let&rsquo;s check version.</p>
+
+<pre><code>$ go version
+go version go1.8 linux/arm 
+</code></pre>
+
+<p>Sweet!<br />
+Now follow <a href="https://golang.org/doc/install#testing">this guide</a> to test the new installation by building &lsquo;Hello World!&rsquo; program.</p>
+
+<p></br></p>
+
 
   
-  <footer>
-    <a href="https://pradippatil.github.io/post/golang-on-rpi/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://pradippatil.github.io/post/raspberrypi-headless/">Headless mode of Raspberry Pi</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>
-    <time>Feb 17, 2017&nbsp;&nbsp;</time>
-
-  
-
-  
-  
-  
-  
-
-  
-  
-  
-    <i class="fa fa-tags fa-fw"></i>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
     
-      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/raspberrypi">raspberrypi</a>
-    
-      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/raspbian">raspbian</a>
+    <a href="https://pradippatil.github.io/post/raspberrypi-headless/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
-  
-  
-
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://pradippatil.github.io/post/raspberrypi-headless/">Headless mode of Raspberry Pi</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
 </div>
 
-  </header>
 
-  <p>
-  This post explains how to configure Raspberry Pi for headless mode (with no monitor and keyboard/mouse of its own).
-
-Things we need  Raspberry Pi SD / microSD card (4GB+) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection
-  </p>
 
   
-  <footer>
-    <a href="https://pradippatil.github.io/post/raspberrypi-headless/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
 
-  
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'pradippatil';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
 </div>
 
 </div>
@@ -355,3 +371,4 @@ Things we need  Raspberry Pi SD / microSD card (4GB+) USB WiFi adapter (Not requ
 
 </body>
 </html>
+

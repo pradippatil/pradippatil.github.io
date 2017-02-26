@@ -7,8 +7,60 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 17 Feb 2017 22:15:38 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 26 Feb 2017 15:22:10 -0500</lastBuildDate>
     <atom:link href="https://pradippatil.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Install Go on Raspberry Pi</title>
+      <link>https://pradippatil.github.io/post/golang-on-rpi/</link>
+      <pubDate>Sun, 26 Feb 2017 15:22:10 -0500</pubDate>
+      
+      <guid>https://pradippatil.github.io/post/golang-on-rpi/</guid>
+      <description>&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://golang.org/&#34;&gt;Go Programming language&lt;/a&gt; is becoming popular in IoT sphere as well.
+I am very fascinated by Go powered robotics/IoT framework &lt;a href=&#34;https://gobot.io/&#34;&gt;Gobot&lt;/a&gt; and planning to play with it using my &lt;a href=&#34;https://pradippatil.github.io/post/raspberrypi-headless&#34;&gt;RPi&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This post explains how to install Go on Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;My RPi &lt;code&gt;(2 Model B)&lt;/code&gt; shows it has ARMv7 processor.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;$ uname -m
+armv7l
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Go&amp;rsquo;s current stable version 1.8 has official ARMv6 build available for &lt;a href=&#34;https://golang.org/dl/&#34;&gt;download&lt;/a&gt;&lt;br /&gt;
+Since ARMv7 compatible CPU can execute ARMv6 code, let&amp;rsquo;s download Go 1.8 ARMv6 build and &lt;a href=&#34;https://golang.org/doc/install&#34;&gt;install&lt;/a&gt; it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://pradippatil.github.io/img/go-armv6.png&#34; alt=&#34;download go&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Download archive
+$ wget https://storage.googleapis.com/golang/go1.8.linux-armv6l.tar.gz 
+
+# Extract it into /usr/local. It will create a Go tree in /usr/local/go
+$ sudo tar -C /usr/local -xzf go1.8.linux-armv6l.tar.gz 
+
+# Add /usr/local/go/bin to the PATH environment variable. 
+# You can do this by adding a line to your /etc/profile 
+# (for a system-wide installation) or $HOME/.profile as shown below
+$ echo &#39;export PATH=$PATH:/usr/local/go/bin&#39; &amp;gt;&amp;gt; $HOME/.profile 
+
+# Above PATH setting will work when we re-login. Export it in current session as well.
+$ export PATH=$PATH:/usr/local/go/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If all above steps worked fine, you will be able to execute &lt;code&gt;go&lt;/code&gt; commands. Let&amp;rsquo;s check version.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ go version
+go version go1.8 linux/arm 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sweet!&lt;br /&gt;
+Now follow &lt;a href=&#34;https://golang.org/doc/install#testing&#34;&gt;this guide&lt;/a&gt; to test the new installation by building &amp;lsquo;Hello World!&amp;rsquo; program.&lt;/p&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Headless mode of Raspberry Pi</title>
