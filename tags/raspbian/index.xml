@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pradip Mahadev Patil</title>
-    <link>https://pradippatil.github.io/tags/raspbian/index.xml</link>
-    <description>Recent content on Pradip Mahadev Patil</description>
+    <title>Raspbian on Pradip Mahadev Patil</title>
+    <link>https://pradippatil.github.io/tags/raspbian/</link>
+    <description>Recent content in Raspbian on Pradip Mahadev Patil</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017. All rights reserved.</copyright>
-    <atom:link href="https://pradippatil.github.io/tags/raspbian/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Feb 2017 22:15:38 -0500</lastBuildDate>
+    
+	<atom:link href="https://pradippatil.github.io/tags/raspbian/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Headless mode of Raspberry Pi</title>
@@ -15,137 +18,9 @@
       <pubDate>Fri, 17 Feb 2017 22:15:38 -0500</pubDate>
       
       <guid>https://pradippatil.github.io/post/raspberrypi-headless/</guid>
-      <description>
+      <description>This post explains how to configure Raspberry Pi for headless mode (with no monitor and keyboard/mouse of its own).
 
-&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
-
-&lt;p&gt;This post explains how to configure &lt;a href=&#34;https://www.raspberrypi.org/products/&#34;&gt;Raspberry Pi&lt;/a&gt; for headless mode (with no monitor and keyboard/mouse of its own).&lt;/p&gt;
-
-&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;things-we-need&#34;&gt;Things we need&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Raspberry Pi&lt;/li&gt;
-&lt;li&gt;SD / microSD card (4GB+)&lt;/li&gt;
-&lt;li&gt;USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt)&lt;/li&gt;
-&lt;li&gt;USB power cable&lt;/li&gt;
-&lt;li&gt;A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection)&lt;/li&gt;
-&lt;li&gt;Internet connection&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://pradippatil.github.io/img/rpi_components.png&#34; alt=&#34;Components&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;download-os-image-for-raspberry-pi&#34;&gt;Download OS image for Raspberry Pi&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Raspbian&lt;/strong&gt; is the Foundation’s official supported operating system which comes in 2 flavours:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;RASPBIAN JESSIE WITH PIXEL&lt;/code&gt; - Full image which includes a new desktop environment called PIXEL (Pi Improved Xwindows Environment Lightweight) and many pre-installed applications.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;RASPBIAN JESSIE LITE&lt;/code&gt; - Minimal image which doesn&amp;rsquo;t include desktop environment and includes core packages. &lt;em&gt;Ideal for headless mode&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Let&amp;rsquo;s use minimal version &lt;code&gt;RASPBIAN JESSIE LITE&lt;/code&gt;.&lt;br /&gt;
-Download from : &lt;a href=&#34;https://www.raspberrypi.org/downloads/raspbian/&#34;&gt;https://www.raspberrypi.org/downloads/raspbian/&lt;/a&gt; and extract it.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://pradippatil.github.io/img/raspbian.png&#34; alt=&#34;Raspbian&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;install-raspbian-image-on-sd-microsd&#34;&gt;Install Raspbian image on SD / microSD&lt;/h3&gt;
-
-&lt;p&gt;(I am doing this on my Ubuntu laptop. Check &lt;a href=&#34;http://elinux.org/RPi_Easy_SD_Card_Setup&#34;&gt;this url&lt;/a&gt; for other OS/methods)&lt;/p&gt;
-
-&lt;p&gt;Insert SD/microSD into computer using USB Card reader or SD card slot and burn Raspbian Lite image using &lt;a href=&#34;https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/&#34;&gt;ImageWriter&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get install usb-imagewriter # install ImageWriter if you don&#39;t have it 
-sudo imagewriter
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://pradippatil.github.io/img/imagewriter_0.png&#34; alt=&#34;ImageWriter&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;After successful completion Raspbian should be ready to use.&lt;/p&gt;
-
-&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;enable-ssh-in-newly-installed-raspbian&#34;&gt;Enable SSH in newly installed Raspbian&lt;/h3&gt;
-
-&lt;p&gt;SSH is disabled by default in Raspbian. To enable it create an empty file with name &amp;ldquo;ssh&amp;rdquo; in &lt;em&gt;boot&lt;/em&gt; partition&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% cd /path/to/sd/card/boot # note that we have to create it in boot 
-% cat /dev/null &amp;gt; ssh  # blank file
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;configure-wifi-connection&#34;&gt;Configure WiFi connection&lt;/h3&gt;
-
-&lt;p&gt;Edit &lt;code&gt;wpa_supplicant.conf&lt;/code&gt; configuration file from sd card using root access&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% cd /path/to/sd/card/
-% sudo vim etc/wpa_supplicant/wpa_supplicant.conf # use sudo
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And put your wifi credentials in below format at the end&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;network={
-    ssid=&amp;quot;your_wifi_ssid&amp;quot;
-    psk=&amp;quot;your_wifi_password&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Save file and exit.&lt;/p&gt;
-
-&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;access-raspberry-pi-remotely-over-wifi-using-ssh&#34;&gt;Access Raspberry Pi remotely over WiFi (using SSH)&lt;/h3&gt;
-
-&lt;p&gt;We&amp;rsquo;ve already enabled SSH and WiFi on Raspbian so that we can access it remotely from computer.&lt;br /&gt;
-Insert SD/microSD card in Raspberry Pi.
-Make sure WiFi adapter is plugged in (not required for Raspberry Pi 3) and plug the power cable.
-While booting up, it&amp;rsquo;ll connect to your local network over WiFi with given credentials in previous step.&lt;/p&gt;
-
-&lt;p&gt;In order to connect to your Raspberry Pi using SSH we need to know the Pi&amp;rsquo;s IP address.
-Thanks to &lt;a href=&#34;https://en.wikipedia.org/wiki/Avahi_(software)&#34;&gt;Avahi&lt;/a&gt; auto service discovery implementation which is installed by default on debian and ubuntu systems, we can use &lt;code&gt;raspberrypi.local&lt;/code&gt; to address our Raspberry Pi (without worrying about it&amp;rsquo;s IP which can be changed by DHCP every time we will reboot/reconnect)&lt;/p&gt;
-
-&lt;p&gt;Default login credentials for Raspbian are:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;username: pi
-password: raspberry
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Open terminal (use &lt;a href=&#34;http://www.putty.org/&#34;&gt;PuTTY&lt;/a&gt; on Windows) and ssh using user &lt;code&gt;pi&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh pi@raspberrypi.local
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After entering password succesfully it will land you in Raspberry Pi.
-Let’s update it.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;That&amp;rsquo;s it. You can now access your RPi with any device having a utility to SSH. Here&amp;rsquo;s my RPi with phone as head.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://pradippatil.github.io/img/rpi_final.png&#34; alt=&#34;myRPi&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Next section describes some more interesting things you can to do with your RPi. &lt;strong&gt;Have a hap&lt;code&gt;Pi&lt;/code&gt; journey! :)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;further-reading&#34;&gt;Further reading:&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;In case you are not able ssh using &lt;code&gt;raspberrypi.local&lt;/code&gt;, find Pi&amp;rsquo;s IP address and use it instead. Check &lt;a href=&#34;https://www.raspberrypi.org/documentation/remote-access/ip-address.md&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Use &lt;a href=&#34;https://www.raspberrypi.org/documentation/configuration/raspi-config.md&#34;&gt;raspi-config&lt;/a&gt; - Raspberry Pi configuration tool in Raspbian that allows you to easily enable features such as the camera, and change your specific settings such as keyboard layout.&lt;/li&gt;
-&lt;li&gt;Setup &lt;a href=&#34;http://www.raspberry-pi-geek.com/Archive/2015/09/Making-your-projects-more-reliable&#34;&gt;Watchdog&lt;/a&gt; which automatically restarts RPi if it becomes unresponsive - helpful to make your projects more reliable.&lt;/li&gt;
-&lt;li&gt;Install &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04&#34;&gt;Fail2ban&lt;/a&gt; which bans IPs that show the malicious signs of incorrect authentications attempts.&lt;/li&gt;
-&lt;li&gt;Although Raspbian Lite doesn&amp;rsquo;t include GUI by default, we can easily install one and access Raspbian via GUI. Follow this guide - &lt;a href=&#34;https://www.raspberrypi.org/forums/viewtopic.php?f=66&amp;amp;t=133691&#34;&gt;Raspbian Lite with PIXEL/LXDE/XFCE/MATE/Openbox GUI&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Access Raspberry Pi over &lt;a href=&#34;https://www.raspberrypi.org/documentation/remote-access/vnc/&#34;&gt;VNC&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+Things we need  Raspberry Pi SD / microSD card (4GB+) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection</description>
     </item>
     
   </channel>
