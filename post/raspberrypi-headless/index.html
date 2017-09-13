@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.25.1" />
+
+  <title>Headless mode of Raspberry Pi &middot; Pradip Mahadev Patil</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://pradippatil.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://pradippatil.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://pradippatil.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Open+Sans" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/github.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/go.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://pradippatil.github.io/img/favicon.png" type="image/x-icon" />
+
+  
+    <link rel="stylesheet" href="https://pradippatil.github.io/css/my.css">
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9275416906925786",
+      enable_page_level_ads: true
+    });
+  </script>
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  <a class="pure-menu-heading brand" href="https://pradippatil.github.io/">
+  <img src="https://pradippatil.github.io/img/logo.png" width="100px">
+</a>
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://pradippatil.github.io/post/"><i class='fa fa-list' aria-hidden='true'></i> Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://pradippatil.github.io/projects/"><i class='fa fa-folder-o' aria-hidden='true'></i> Projects</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://stackoverflow.com/story/pradippatil"><i class='fa fa-user'></i> About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://pradippatil.github.io/tags/"><i class='fa fa-tags fa-fw'></i>Tags</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/pradip__patil" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/pradip86" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/pradippatil" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/3781709/pradip" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+    <a class="pure-menu-link" href="https://www.goodreads.com/pradipatil" target="_blank">
+    <i><span style="font-family:helvetica;font-size:18px">g</span> </i> Goodreads</a>
+    </li>
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2017. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Headless mode of Raspberry Pi</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>
+    <time>Feb 17, 2017&nbsp;&nbsp;</time>
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/raspberrypi">raspberrypi</a>
+    
+      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/raspbian">raspbian</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p></br></p>
+
+<p>This post explains how to configure <a href="https://www.raspberrypi.org/products/">Raspberry Pi</a> for headless mode (with no monitor and keyboard/mouse of its own).</p>
+
+<p></br></p>
+
+<h3 id="things-we-need">Things we need</h3>
+
+<ol>
+<li>Raspberry Pi</li>
+<li>SD / microSD card (4GB+)</li>
+<li>USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt)</li>
+<li>USB power cable</li>
+<li>A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection)</li>
+<li>Internet connection</li>
+</ol>
+
+<p><img src="https://pradippatil.github.io/img/rpi_components.png" alt="Components" /></p>
+
+<p></br></p>
+
+<h3 id="download-os-image-for-raspberry-pi">Download OS image for Raspberry Pi</h3>
+
+<p><strong>Raspbian</strong> is the Foundation’s official supported operating system which comes in 2 flavours:</p>
+
+<ol>
+<li><code>RASPBIAN JESSIE WITH PIXEL</code> - Full image which includes a new desktop environment called PIXEL (Pi Improved Xwindows Environment Lightweight) and many pre-installed applications.</li>
+<li><code>RASPBIAN JESSIE LITE</code> - Minimal image which doesn&rsquo;t include desktop environment and includes core packages. <em>Ideal for headless mode</em></li>
+</ol>
+
+<p>Let&rsquo;s use minimal version <code>RASPBIAN JESSIE LITE</code>.<br />
+Download from : <a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a> and extract it.</p>
+
+<p><img src="https://pradippatil.github.io/img/raspbian.png" alt="Raspbian" /></p>
+
+<p></br></p>
+
+<h3 id="install-raspbian-image-on-sd-microsd">Install Raspbian image on SD / microSD</h3>
+
+<p>(I am doing this on my Ubuntu laptop. Check <a href="http://elinux.org/RPi_Easy_SD_Card_Setup">this url</a> for other OS/methods)</p>
+
+<p>Insert SD/microSD into computer using USB Card reader or SD card slot and burn Raspbian Lite image using <a href="https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/">ImageWriter</a>.</p>
+
+<pre><code class="language-bash">sudo apt-get install usb-imagewriter # install ImageWriter if you don't have it 
+sudo imagewriter
+</code></pre>
+
+<p><img src="https://pradippatil.github.io/img/imagewriter_0.png" alt="ImageWriter" /></p>
+
+<p>After successful completion Raspbian should be ready to use.</p>
+
+<p></br></p>
+
+<h3 id="enable-ssh-in-newly-installed-raspbian">Enable SSH in newly installed Raspbian</h3>
+
+<p>SSH is disabled by default in Raspbian. To enable it create an empty file with name &ldquo;ssh&rdquo; in <em>boot</em> partition</p>
+
+<pre><code class="language-bash">% cd /path/to/sd/card/boot # note that we have to create it in boot 
+% cat /dev/null &gt; ssh  # blank file
+</code></pre>
+
+<p></br></p>
+
+<h3 id="configure-wifi-connection">Configure WiFi connection</h3>
+
+<p>Edit <code>wpa_supplicant.conf</code> configuration file from sd card using root access</p>
+
+<pre><code class="language-bash">% cd /path/to/sd/card/
+% sudo vim etc/wpa_supplicant/wpa_supplicant.conf # use sudo
+</code></pre>
+
+<p>And put your wifi credentials in below format at the end</p>
+
+<pre><code>network={
+    ssid=&quot;your_wifi_ssid&quot;
+    psk=&quot;your_wifi_password&quot;
+}
+</code></pre>
+
+<p>Save file and exit.</p>
+
+<p></br></p>
+
+<h3 id="access-raspberry-pi-remotely-over-wifi-using-ssh">Access Raspberry Pi remotely over WiFi (using SSH)</h3>
+
+<p>We&rsquo;ve already enabled SSH and WiFi on Raspbian so that we can access it remotely from computer.<br />
+Insert SD/microSD card in Raspberry Pi.
+Make sure WiFi adapter is plugged in (not required for Raspberry Pi 3) and plug the power cable.
+While booting up, it&rsquo;ll connect to your local network over WiFi with given credentials in previous step.</p>
+
+<p>In order to connect to your Raspberry Pi using SSH we need to know the Pi&rsquo;s IP address.
+Thanks to <a href="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</a> auto service discovery implementation which is installed by default on debian and ubuntu systems, we can use <code>raspberrypi.local</code> to address our Raspberry Pi (without worrying about it&rsquo;s IP which can be changed by DHCP every time we will reboot/reconnect)</p>
+
+<p>Default login credentials for Raspbian are:</p>
+
+<pre><code class="language-bash">username: pi
+password: raspberry
+</code></pre>
+
+<p>Open terminal (use <a href="http://www.putty.org/">PuTTY</a> on Windows) and ssh using user <code>pi</code></p>
+
+<pre><code class="language-bash">ssh pi@raspberrypi.local
+</code></pre>
+
+<p>After entering password succesfully it will land you in Raspberry Pi.
+Let’s update it.</p>
+
+<pre><code class="language-bash">sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre>
+
+<p>That&rsquo;s it. You can now access your RPi with any device having a utility to SSH. Here&rsquo;s my RPi with phone as head.</p>
+
+<p><img src="https://pradippatil.github.io/img/rpi_final.png" alt="myRPi" /></p>
+
+<p>Next section describes some more interesting things you can to do with your RPi. <strong>Have a hap<code>Pi</code> journey! :)</strong></p>
+
+<p></br></p>
+
+<h4 id="further-reading">Further reading:</h4>
+
+<ol>
+<li>In case you are not able ssh using <code>raspberrypi.local</code>, find Pi&rsquo;s IP address and use it instead. Check <a href="https://www.raspberrypi.org/documentation/remote-access/ip-address.md">here</a>.</li>
+<li>Use <a href="https://www.raspberrypi.org/documentation/configuration/raspi-config.md">raspi-config</a> - Raspberry Pi configuration tool in Raspbian that allows you to easily enable features such as the camera, and change your specific settings such as keyboard layout.</li>
+<li>Setup <a href="http://www.raspberry-pi-geek.com/Archive/2015/09/Making-your-projects-more-reliable">Watchdog</a> which automatically restarts RPi if it becomes unresponsive - helpful to make your projects more reliable.</li>
+<li>Install <a href="https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04">Fail2ban</a> which bans IPs that show the malicious signs of incorrect authentications attempts.</li>
+<li>Although Raspbian Lite doesn&rsquo;t include GUI by default, we can easily install one and access Raspbian via GUI. Follow this guide - <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=66&amp;t=133691">Raspbian Lite with PIXEL/LXDE/XFCE/MATE/Openbox GUI</a></li>
+<li>Access Raspberry Pi over <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/">VNC</a></li>
+</ol>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://pradippatil.github.io/post/viper/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://pradippatil.github.io/post/viper/">Configuration management in Go (using Viper)</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://pradippatil.github.io/post/golang-on-rpi/">Install Go on Raspberry Pi</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://pradippatil.github.io/post/golang-on-rpi/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'pradippatil';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="https://pradippatil.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12859140-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+
