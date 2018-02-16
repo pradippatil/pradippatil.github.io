@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Pradip Mahadev Patil</title>
+    <link>http://pradippatil.com/categories/hugo/</link>
+    <description>Recent content in Hugo on Pradip Mahadev Patil</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 20 Jul 2016 22:04:05 -0400</lastBuildDate>
+    
+	<atom:link href="http://pradippatil.com/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Build a version controlled blog using Hugo, GitHub and Drone.io</title>
+      <link>http://pradippatil.com/post/how-to-hugo/</link>
+      <pubDate>Wed, 20 Jul 2016 22:04:05 -0400</pubDate>
+      
+      <guid>http://pradippatil.com/post/how-to-hugo/</guid>
+      <description>http://xkcd.com/741/ Content Management Systems nowdays are relatively easy to setup and install but usually overkill for static websites like many of the personal blogs. I prefer an alternative, Hugo to generate static site, GitHub Pages for version control and hosting, and Drone.io for auto deployment.
+Read below to find out how one can build a static blog/website blazingly fast using these tools.
+1. Build a static blog locally Static web pages are delivered to user exactly as stored unlike dynamic web pages which include web server processing for every request, for example, getting data from database, embedding it in configured templates and generating a HTML page to deliver to user.</description>
+    </item>
+    
+  </channel>
+</rss>

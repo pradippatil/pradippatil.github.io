@@ -1,263 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.25.1" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Headless mode of Raspberry Pi - Pradip Mahadev Patil</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-  <title>Headless mode of Raspberry Pi &middot; Pradip Mahadev Patil</title>
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-  
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
-  <!--<![endif]-->
 
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://pradippatil.github.io/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://pradippatil.github.io/css/side-menu.css">
-  <!--<![endif]-->
+<meta name="author" content="Pradip Patil" />
+  <meta name="description" content="This post explains how to configure Raspberry Pi for headless mode (with no monitor and keyboard/mouse of its own).
 
-  <link rel="stylesheet" href="https://pradippatil.github.io/css/blackburn.css">
+Things we need  Raspberry Pi SD / microSD card (4GB&#43;) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection" />
 
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <meta name="keywords" content="Hugo, theme, even" />
 
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway|Open+Sans" rel="stylesheet" type="text/css">
 
-  
-  
 
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/github.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/go.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  
 
-  <link rel="shortcut icon" href="https://pradippatil.github.io/img/favicon.png" type="image/x-icon" />
 
-  
-    <link rel="stylesheet" href="https://pradippatil.github.io/css/my.css">
-  
-  
 
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-9275416906925786",
-      enable_page_level_ads: true
-    });
-  </script>
+<meta name="generator" content="Hugo 0.36.1" />
+
+
+<link rel="canonical" href="http://pradippatil.com/post/raspberrypi-headless/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.0.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Headless mode of Raspberry Pi" />
+<meta property="og:description" content="This post explains how to configure Raspberry Pi for headless mode (with no monitor and keyboard/mouse of its own).
+
+Things we need  Raspberry Pi SD / microSD card (4GB&#43;) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://pradippatil.com/post/raspberrypi-headless/" />
+
+
+
+<meta property="article:published_time" content="2017-02-17T22:15:38-05:00"/>
+
+<meta property="article:modified_time" content="2017-02-17T22:15:38-05:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Headless mode of Raspberry Pi">
+<meta itemprop="description" content="This post explains how to configure Raspberry Pi for headless mode (with no monitor and keyboard/mouse of its own).
+
+Things we need  Raspberry Pi SD / microSD card (4GB&#43;) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection">
+
+
+<meta itemprop="datePublished" content="2017-02-17T22:15:38-05:00" />
+<meta itemprop="dateModified" content="2017-02-17T22:15:38-05:00" />
+<meta itemprop="wordCount" content="619">
+
+
+
+<meta itemprop="keywords" content="raspberrypi,raspbian," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Headless mode of Raspberry Pi"/>
+<meta name="twitter:description" content="This post explains how to configure Raspberry Pi for headless mode (with no monitor and keyboard/mouse of its own).
+
+Things we need  Raspberry Pi SD / microSD card (4GB&#43;) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
 
 </head>
-
-
 <body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  <a class="pure-menu-heading brand" href="https://pradippatil.github.io/">
-  <img src="https://pradippatil.github.io/img/logo.png" width="100px">
-</a>
-
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://pradippatil.github.io/post/"><i class='fa fa-list' aria-hidden='true'></i> Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://pradippatil.github.io/projects/"><i class='fa fa-folder-o' aria-hidden='true'></i> Projects</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://stackoverflow.com/story/pradippatil"><i class='fa fa-user'></i> About</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://pradippatil.github.io/tags/"><i class='fa fa-tags fa-fw'></i>Tags</a>
-      
-        </li>
-      
-    </ul>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Pradip Patil</a>
   </div>
-
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/pradip__patil" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://linkedin.com/in/pradip86" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/pradippatil" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://stackoverflow.com/users/3781709/pradip" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-    <a class="pure-menu-link" href="https://www.goodreads.com/pradipatil" target="_blank">
-    <i><span style="font-family:helvetica;font-size:18px">g</span> </i> Goodreads</a>
-    </li>
-    
-
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
   </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Pradip Patil</a>
 </div>
 
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
 
-  <div>
-  <div class="small-print">
-    <small>&copy; 2017. All rights reserved.</small>
-  </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-
-  <div id="main">
-
-
-<div class="header">
-  <h1>Headless mode of Raspberry Pi</h1>
-  <h2></h2>
-</div>
-<div class="content">
-
-  <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>
-    <time>Feb 17, 2017&nbsp;&nbsp;</time>
-
-  
-
-  
-  
-  
-  
-
-  
-  
-  
-    <i class="fa fa-tags fa-fw"></i>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
     
-      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/raspberrypi">raspberrypi</a>
-    
-      <a class="post-taxonomy-tag" href="https://pradippatil.github.io/tags/raspbian">raspbian</a>
-    
-  </div>
-  
-  
+    <header class="post-header">
+      <h1 class="post-title">Headless mode of Raspberry Pi</h1>
 
+      <div class="post-meta">
+        <span class="post-time"> Feb 17, 2017 </span>
+        
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#things-we-need">Things we need</a></li>
+<li><a href="#download-os-image-for-raspberry-pi">Download OS image for Raspberry Pi</a></li>
+<li><a href="#install-raspbian-image-on-sd-microsd">Install Raspbian image on SD / microSD</a></li>
+<li><a href="#enable-ssh-in-newly-installed-raspbian">Enable SSH in newly installed Raspbian</a></li>
+<li><a href="#configure-wifi-connection">Configure WiFi connection</a></li>
+<li><a href="#access-raspberry-pi-remotely-over-wifi-using-ssh">Access Raspberry Pi remotely over WiFi (using SSH)</a>
+<ul>
+<li><a href="#further-reading">Further reading:</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
 </div>
 
-  
+    
+    <div class="post-content">
+      
 
 <p></br></p>
 
@@ -276,7 +209,7 @@
 <li>Internet connection</li>
 </ol>
 
-<p><img src="https://pradippatil.github.io/img/rpi_components.png" alt="Components" /></p>
+<p><img src="/img/rpi_components.png" alt="Components" /></p>
 
 <p></br></p>
 
@@ -292,7 +225,7 @@
 <p>Let&rsquo;s use minimal version <code>RASPBIAN JESSIE LITE</code>.<br />
 Download from : <a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a> and extract it.</p>
 
-<p><img src="https://pradippatil.github.io/img/raspbian.png" alt="Raspbian" /></p>
+<p><img src="/img/raspbian.png" alt="Raspbian" /></p>
 
 <p></br></p>
 
@@ -306,7 +239,7 @@ Download from : <a href="https://www.raspberrypi.org/downloads/raspbian/">https:
 sudo imagewriter
 </code></pre>
 
-<p><img src="https://pradippatil.github.io/img/imagewriter_0.png" alt="ImageWriter" /></p>
+<p><img src="/img/imagewriter_0.png" alt="ImageWriter" /></p>
 
 <p>After successful completion Raspbian should be ready to use.</p>
 
@@ -371,7 +304,7 @@ Let’s update it.</p>
 
 <p>That&rsquo;s it. You can now access your RPi with any device having a utility to SSH. Here&rsquo;s my RPi with phone as head.</p>
 
-<p><img src="https://pradippatil.github.io/img/rpi_final.png" alt="myRPi" /></p>
+<p><img src="/img/rpi_final.png" alt="myRPi" /></p>
 
 <p>Next section describes some more interesting things you can to do with your RPi. <strong>Have a hap<code>Pi</code> journey! :)</strong></p>
 
@@ -388,80 +321,111 @@ Let’s update it.</p>
 <li>Access Raspberry Pi over <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/">VNC</a></li>
 </ol>
 
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Pradip Patil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Feb 17, 2017</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/raspberrypi/">raspberrypi</a>
+          
+          <a href="/tags/raspbian/">raspbian</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/golang-on-rpi/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Install Go on Raspberry Pi</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/viper/">
+            <span class="next-text nav-default">Configuration management in Go (using Viper)</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
 
   
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
-    
-    <a href="https://pradippatil.github.io/post/viper/"><i class="fa fa-chevron-left"></i></a>
-    
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="https://pradippatil.github.io/post/viper/">Configuration management in Go (using Viper)</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-2-24">
-    &nbsp;
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="next">
-      <a href="https://pradippatil.github.io/post/golang-on-rpi/">Install Go on Raspberry Pi</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://pradippatil.github.io/post/golang-on-rpi/"><i class="fa fa-chevron-right"></i></a>
-    
-  </div>
-</div>
-
-
 
   
-<div id="disqus_thread"></div>
-<script type="text/javascript">
+      </div>
+    </main>
 
-(function() {
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://stackoverflow.com/users/story/3781709" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/pradip__patil/" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/pradip86/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/pradippatil" class="iconfont icon-github" title="github"></a>
+  <a href="http://pradippatil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
     
-    
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'pradippatil';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Pradip Patil</span>
+  </span>
 </div>
+    </footer>
 
-</div>
-</div>
-<script src="https://pradippatil.github.io/js/ui.js"></script>
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.0.0"></script>
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-12859140-1', 'auto');
-  ga('send', 'pageview');
 
-</script>
+
 
 
 
 </body>
 </html>
-

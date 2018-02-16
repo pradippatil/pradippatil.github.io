@@ -2,22 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Raspbian on Pradip Mahadev Patil</title>
-    <link>https://pradippatil.github.io/tags/raspbian/</link>
+    <link>http://pradippatil.com/tags/raspbian/</link>
     <description>Recent content in Raspbian on Pradip Mahadev Patil</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2017. All rights reserved.</copyright>
+    <language>en</language>
     <lastBuildDate>Fri, 17 Feb 2017 22:15:38 -0500</lastBuildDate>
     
-	<atom:link href="https://pradippatil.github.io/tags/raspbian/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://pradippatil.com/tags/raspbian/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Headless mode of Raspberry Pi</title>
-      <link>https://pradippatil.github.io/post/raspberrypi-headless/</link>
+      <link>http://pradippatil.com/post/raspberrypi-headless/</link>
       <pubDate>Fri, 17 Feb 2017 22:15:38 -0500</pubDate>
       
-      <guid>https://pradippatil.github.io/post/raspberrypi-headless/</guid>
+      <guid>http://pradippatil.com/post/raspberrypi-headless/</guid>
       <description>This post explains how to configure Raspberry Pi for headless mode (with no monitor and keyboard/mouse of its own).
 
 Things we need  Raspberry Pi SD / microSD card (4GB+) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection</description>
