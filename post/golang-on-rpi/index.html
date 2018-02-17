@@ -20,8 +20,7 @@
   <meta name="description" content="Go Programming language is becoming popular in IoT sphere as well. I am very fascinated by Go powered robotics/IoT framework Gobot and planning to play with it using my RPi.
 This post explains how to install Go on Raspberry Pi.
 My RPi (2 Model B) shows it has ARMv7 processor.
-$ uname -m armv7l  Go&amp;rsquo;s current stable version 1.8 has official ARMv6 build available for download
-Since ARMv7 compatible CPU can execute ARMv6 code, let&amp;rsquo;s download Go 1." />
+$ uname -m armv7l  Go&amp;rsquo;s current stable version 1.8 has official ARMv6 build available for download Since ARMv7 compatible CPU can execute ARMv6 code, let&amp;rsquo;s download Go 1." />
 
   <meta name="keywords" content="Hugo, theme, even" />
 
@@ -59,8 +58,7 @@ Since ARMv7 compatible CPU can execute ARMv6 code, let&amp;rsquo;s download Go 1
 <meta property="og:description" content="Go Programming language is becoming popular in IoT sphere as well. I am very fascinated by Go powered robotics/IoT framework Gobot and planning to play with it using my RPi.
 This post explains how to install Go on Raspberry Pi.
 My RPi (2 Model B) shows it has ARMv7 processor.
-$ uname -m armv7l  Go&rsquo;s current stable version 1.8 has official ARMv6 build available for download
-Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1." />
+$ uname -m armv7l  Go&rsquo;s current stable version 1.8 has official ARMv6 build available for download Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://pradippatil.com/post/golang-on-rpi/" />
 
@@ -84,13 +82,12 @@ Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1." /
 <meta itemprop="description" content="Go Programming language is becoming popular in IoT sphere as well. I am very fascinated by Go powered robotics/IoT framework Gobot and planning to play with it using my RPi.
 This post explains how to install Go on Raspberry Pi.
 My RPi (2 Model B) shows it has ARMv7 processor.
-$ uname -m armv7l  Go&rsquo;s current stable version 1.8 has official ARMv6 build available for download
-Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1.">
+$ uname -m armv7l  Go&rsquo;s current stable version 1.8 has official ARMv6 build available for download Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1.">
 
 
 <meta itemprop="datePublished" content="2017-02-26T15:22:10-05:00" />
 <meta itemprop="dateModified" content="2017-02-26T15:22:10-05:00" />
-<meta itemprop="wordCount" content="266">
+<meta itemprop="wordCount" content="265">
 
 
 
@@ -100,8 +97,7 @@ Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1.">
 <meta name="twitter:description" content="Go Programming language is becoming popular in IoT sphere as well. I am very fascinated by Go powered robotics/IoT framework Gobot and planning to play with it using my RPi.
 This post explains how to install Go on Raspberry Pi.
 My RPi (2 Model B) shows it has ARMv7 processor.
-$ uname -m armv7l  Go&rsquo;s current stable version 1.8 has official ARMv6 build available for download
-Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1."/>
+$ uname -m armv7l  Go&rsquo;s current stable version 1.8 has official ARMv6 build available for download Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -195,25 +191,25 @@ I am very fascinated by Go powered robotics/IoT framework <a href="https://gobot
 
 <p>My RPi <code>(2 Model B)</code> shows it has ARMv7 processor.</p>
 
-<pre><code class="language-xml">$ uname -m
+<pre><code class="language-bash">$ uname -m
 armv7l
 </code></pre>
 
-<p>Go&rsquo;s current stable version 1.8 has official ARMv6 build available for <a href="https://golang.org/dl/">download</a><br />
+<p>Go&rsquo;s current stable version 1.8 has official ARMv6 build available for <a href="https://golang.org/dl/">download</a>
 Since ARMv7 compatible CPU can execute ARMv6 code, let&rsquo;s download Go 1.8 ARMv6 build and <a href="https://golang.org/doc/install">install</a> it.</p>
 
 <p><img src="/img/go-armv6.png" alt="download go" /></p>
 
 <pre><code class="language-bash"># Download archive
-$ wget https://storage.googleapis.com/golang/go1.8.linux-armv6l.tar.gz 
+$ wget https://storage.googleapis.com/golang/go1.8.linux-armv6l.tar.gz
 
 # Extract it into /usr/local. It will create a Go tree in /usr/local/go
-$ sudo tar -C /usr/local -xzf go1.8.linux-armv6l.tar.gz 
+$ sudo tar -C /usr/local -xzf go1.8.linux-armv6l.tar.gz
 
-# Add /usr/local/go/bin to the PATH environment variable. 
-# You can do this by adding a line to your /etc/profile 
+# Add /usr/local/go/bin to the PATH environment variable.
+# You can do this by adding a line to your /etc/profile
 # (for a system-wide installation) or $HOME/.profile as shown below
-$ echo 'export PATH=$PATH:/usr/local/go/bin' &gt;&gt; $HOME/.profile 
+$ echo 'export PATH=$PATH:/usr/local/go/bin' &gt;&gt; $HOME/.profile
 
 # Above PATH setting will work when we re-login. Export it in current session as well.
 $ export PATH=$PATH:/usr/local/go/bin
@@ -221,20 +217,20 @@ $ export PATH=$PATH:/usr/local/go/bin
 
 <p>If all above steps worked fine, you will be able to execute <code>go</code> commands. Let&rsquo;s check version.</p>
 
-<pre><code>$ go version
-go version go1.8 linux/arm 
+<pre><code class="language-bash">$ go version
+go version go1.8 linux/arm
 </code></pre>
 
-<p>Sweet!<br />
+<p>Sweet!
 Follow <a href="https://golang.org/doc/install#testing">this guide</a> to test the new installation by building &lsquo;Hello World!&rsquo; program.</p>
 
-<p><strong>Note:</strong><br />
+<p><strong>Note:</strong>
 You will soon be installing external libraries/packages using <code>go get</code>.
-The go get fetching of source code is done by using one of the tools mentioned here: <a href="https://github.com/golang/go/wiki/GoGetTools">https://github.com/golang/go/wiki/GoGetTools</a>
+The go get fetching of source code is done by using one of the tools mentioned <a href="https://github.com/golang/go/wiki/GoGetTools">here</a>
 and it is expected to be found on your system. I installed <strong>git</strong> from that list using below command</p>
 
 <pre><code class="language-bash"># Using apt-get, since I have `Raspbian` installed on my RPi
-$ sudo apt-get install git 
+$ sudo apt-get install git
 </code></pre>
 
 <p></br></p>

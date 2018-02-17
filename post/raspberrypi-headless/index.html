@@ -84,7 +84,7 @@ Things we need  Raspberry Pi SD / microSD card (4GB&#43;) USB WiFi adapter (Not 
 
 <meta itemprop="datePublished" content="2017-02-17T22:15:38-05:00" />
 <meta itemprop="dateModified" content="2017-02-17T22:15:38-05:00" />
-<meta itemprop="wordCount" content="619">
+<meta itemprop="wordCount" content="616">
 
 
 
@@ -183,10 +183,8 @@ Things we need  Raspberry Pi SD / microSD card (4GB&#43;) USB WiFi adapter (Not 
 <li><a href="#install-raspbian-image-on-sd-microsd">Install Raspbian image on SD / microSD</a></li>
 <li><a href="#enable-ssh-in-newly-installed-raspbian">Enable SSH in newly installed Raspbian</a></li>
 <li><a href="#configure-wifi-connection">Configure WiFi connection</a></li>
-<li><a href="#access-raspberry-pi-remotely-over-wifi-using-ssh">Access Raspberry Pi remotely over WiFi (using SSH)</a>
-<ul>
+<li><a href="#access-raspberry-pi-remotely-over-wifi-using-ssh">Access Raspberry Pi remotely over WiFi (using SSH)</a></li>
 <li><a href="#further-reading">Further reading:</a></li>
-</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -228,8 +226,8 @@ Things we need  Raspberry Pi SD / microSD card (4GB&#43;) USB WiFi adapter (Not 
 <li><code>RASPBIAN JESSIE LITE</code> - Minimal image which doesn&rsquo;t include desktop environment and includes core packages. <em>Ideal for headless mode</em></li>
 </ol>
 
-<p>Let&rsquo;s use minimal version <code>RASPBIAN JESSIE LITE</code>.<br />
-Download from : <a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a> and extract it.</p>
+<p>Let&rsquo;s use minimal version <code>RASPBIAN JESSIE LITE</code>.
+<a href="https://www.raspberrypi.org/downloads/raspbian/">Download</a> and extract it.</p>
 
 <p><img src="/img/raspbian.png" alt="Raspbian" /></p>
 
@@ -241,7 +239,7 @@ Download from : <a href="https://www.raspberrypi.org/downloads/raspbian/">https:
 
 <p>Insert SD/microSD into computer using USB Card reader or SD card slot and burn Raspbian Lite image using <a href="https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/">ImageWriter</a>.</p>
 
-<pre><code class="language-bash">sudo apt-get install usb-imagewriter # install ImageWriter if you don't have it 
+<pre><code class="language-bash">sudo apt-get install usb-imagewriter # install ImageWriter if you don't have it
 sudo imagewriter
 </code></pre>
 
@@ -255,7 +253,7 @@ sudo imagewriter
 
 <p>SSH is disabled by default in Raspbian. To enable it create an empty file with name &ldquo;ssh&rdquo; in <em>boot</em> partition</p>
 
-<pre><code class="language-bash">% cd /path/to/sd/card/boot # note that we have to create it in boot 
+<pre><code class="language-bash">% cd /path/to/sd/card/boot # note that we have to create it in boot
 % cat /dev/null &gt; ssh  # blank file
 </code></pre>
 
@@ -271,7 +269,7 @@ sudo imagewriter
 
 <p>And put your wifi credentials in below format at the end</p>
 
-<pre><code>network={
+<pre><code class="language-ini">network={
     ssid=&quot;your_wifi_ssid&quot;
     psk=&quot;your_wifi_password&quot;
 }
@@ -283,7 +281,7 @@ sudo imagewriter
 
 <h3 id="access-raspberry-pi-remotely-over-wifi-using-ssh">Access Raspberry Pi remotely over WiFi (using SSH)</h3>
 
-<p>We&rsquo;ve already enabled SSH and WiFi on Raspbian so that we can access it remotely from computer.<br />
+<p>We&rsquo;ve already enabled SSH and WiFi on Raspbian so that we can access it remotely from computer.
 Insert SD/microSD card in Raspberry Pi.
 Make sure WiFi adapter is plugged in (not required for Raspberry Pi 3) and plug the power cable.
 While booting up, it&rsquo;ll connect to your local network over WiFi with given credentials in previous step.</p>
@@ -316,7 +314,7 @@ Let’s update it.</p>
 
 <p></br></p>
 
-<h4 id="further-reading">Further reading:</h4>
+<h3 id="further-reading">Further reading:</h3>
 
 <ol>
 <li>In case you are not able ssh using <code>raspberrypi.local</code>, find Pi&rsquo;s IP address and use it instead. Check <a href="https://www.raspberrypi.org/documentation/remote-access/ip-address.md">here</a>.</li>
