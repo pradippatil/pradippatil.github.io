@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on प्रदीप महादेव पाटील</title>
-    <link>http://pradippatil.com/categories/</link>
-    <description>Recent content in Categories on प्रदीप महादेव पाटील</description>
+    <title>Categories on Pradip Patil</title>
+    <link>http://www.pradippatil.com/categories/</link>
+    <description>Recent content in Categories on Pradip Patil</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	<atom:link href="http://pradippatil.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.pradippatil.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo</title>
-      <link>http://pradippatil.com/categories/hugo/</link>
+      <link>http://www.pradippatil.com/categories/hugo/</link>
       <pubDate>Wed, 20 Jul 2016 22:04:05 -0400</pubDate>
       
-      <guid>http://pradippatil.com/categories/hugo/</guid>
+      <guid>http://www.pradippatil.com/categories/hugo/</guid>
       <description></description>
     </item>
     

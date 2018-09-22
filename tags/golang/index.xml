@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on प्रदीप महादेव पाटील</title>
-    <link>http://pradippatil.com/tags/golang/</link>
-    <description>Recent content in Golang on प्रदीप महादेव पाटील</description>
+    <title>Golang on Pradip Patil</title>
+    <link>http://www.pradippatil.com/tags/golang/</link>
+    <description>Recent content in Golang on Pradip Patil</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 26 Feb 2017 15:22:10 -0500</lastBuildDate>
     
-	<atom:link href="http://pradippatil.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.pradippatil.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Install Go on Raspberry Pi</title>
-      <link>http://pradippatil.com/post/golang-on-rpi/</link>
+      <link>http://www.pradippatil.com/posts/golang-on-rpi/</link>
       <pubDate>Sun, 26 Feb 2017 15:22:10 -0500</pubDate>
       
-      <guid>http://pradippatil.com/post/golang-on-rpi/</guid>
+      <guid>http://www.pradippatil.com/posts/golang-on-rpi/</guid>
       <description>Go Programming language is becoming popular in IoT sphere as well. I am very fascinated by Go powered robotics/IoT framework Gobot and planning to play with it using my RPi.
 This post explains how to install Go on Raspberry Pi.
 My RPi (2 Model B) shows it has ARMv7 processor.
-$ uname -m armv7l  Go&amp;rsquo;s current stable version 1.8 has official ARMv6 build available for download Since ARMv7 compatible CPU can execute ARMv6 code, let&amp;rsquo;s download Go 1.</description>
+$ uname -m armv7l Go&amp;rsquo;s current stable version 1.8 has official ARMv6 build available for download Since ARMv7 compatible CPU can execute ARMv6 code, let&amp;rsquo;s download Go 1.</description>
     </item>
     
     <item>
       <title>Configuration management in Go (using Viper)</title>
-      <link>http://pradippatil.com/post/viper/</link>
+      <link>http://www.pradippatil.com/posts/viper/</link>
       <pubDate>Sat, 14 Jan 2017 23:19:36 -0500</pubDate>
       
-      <guid>http://pradippatil.com/post/viper/</guid>
+      <guid>http://www.pradippatil.com/posts/viper/</guid>
       <description>Config factor from The Twelve-Factor App states that application&amp;rsquo;s configuration should be isolated from code to make configuring an app for different environments very convenient and scaling it up a breeze.
 Configuration management for modern applications which run on so many different environment is becoming complex with advent of microservices and cloud computing. Not to mention dealing with several formats/markup languages to store app&amp;rsquo;s configurations.
 This post is about one of my favorite Go libraries Viper which claims to be a complete configuration solution for Go applications.</description>

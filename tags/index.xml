@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on प्रदीप महादेव पाटील</title>
-    <link>http://pradippatil.com/tags/</link>
-    <description>Recent content in Tags on प्रदीप महादेव पाटील</description>
+    <title>Tags on Pradip Patil</title>
+    <link>http://www.pradippatil.com/tags/</link>
+    <description>Recent content in Tags on Pradip Patil</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 20 Jul 2016 22:04:05 -0400</lastBuildDate>
     
-	<atom:link href="http://pradippatil.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.pradippatil.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Droneio</title>
-      <link>http://pradippatil.com/tags/droneio/</link>
+      <link>http://www.pradippatil.com/tags/droneio/</link>
       <pubDate>Wed, 20 Jul 2016 22:04:05 -0400</pubDate>
       
-      <guid>http://pradippatil.com/tags/droneio/</guid>
+      <guid>http://www.pradippatil.com/tags/droneio/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Githubpages</title>
-      <link>http://pradippatil.com/tags/githubpages/</link>
+      <link>http://www.pradippatil.com/tags/githubpages/</link>
       <pubDate>Wed, 20 Jul 2016 22:04:05 -0400</pubDate>
       
-      <guid>http://pradippatil.com/tags/githubpages/</guid>
+      <guid>http://www.pradippatil.com/tags/githubpages/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Golang</title>
-      <link>http://pradippatil.com/tags/golang/</link>
+      <link>http://www.pradippatil.com/tags/golang/</link>
       <pubDate>Sun, 26 Feb 2017 15:22:10 -0500</pubDate>
       
-      <guid>http://pradippatil.com/tags/golang/</guid>
+      <guid>http://www.pradippatil.com/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>http://pradippatil.com/tags/hugo/</link>
+      <link>http://www.pradippatil.com/tags/hugo/</link>
       <pubDate>Wed, 20 Jul 2016 22:04:05 -0400</pubDate>
       
-      <guid>http://pradippatil.com/tags/hugo/</guid>
+      <guid>http://www.pradippatil.com/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Raspberrypi</title>
-      <link>http://pradippatil.com/tags/raspberrypi/</link>
+      <link>http://www.pradippatil.com/tags/raspberrypi/</link>
       <pubDate>Sun, 26 Feb 2017 15:22:10 -0500</pubDate>
       
-      <guid>http://pradippatil.com/tags/raspberrypi/</guid>
+      <guid>http://www.pradippatil.com/tags/raspberrypi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Raspbian</title>
-      <link>http://pradippatil.com/tags/raspbian/</link>
+      <link>http://www.pradippatil.com/tags/raspbian/</link>
       <pubDate>Fri, 17 Feb 2017 22:15:38 -0500</pubDate>
       
-      <guid>http://pradippatil.com/tags/raspbian/</guid>
+      <guid>http://www.pradippatil.com/tags/raspbian/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Viper</title>
-      <link>http://pradippatil.com/tags/viper/</link>
+      <link>http://www.pradippatil.com/tags/viper/</link>
       <pubDate>Sat, 14 Jan 2017 23:19:36 -0500</pubDate>
       
-      <guid>http://pradippatil.com/tags/viper/</guid>
+      <guid>http://www.pradippatil.com/tags/viper/</guid>
       <description></description>
     </item>
     

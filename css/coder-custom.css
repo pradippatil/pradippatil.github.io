@@ -1,0 +1,58 @@
+
+/* @import url(https://fonts.googleapis.com/css?family=Economica:700|Lora:400,700,400italic,700italic|Roboto+Mono:400,700,400italic,700italic); */
+@import url('https://fonts.googleapis.com/css?family=Economica:700|Lora:400,400i,700,700i|Roboto+Mono:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Coda');
+
+h2, h3 {
+    color: #211b1a !important;
+}
+.list ul li a {
+    font-family: Economica,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    /* font-family: Coda; */
+    font-size: 16px;
+    /* color: #681e29; */
+    /* font-family: Lora,Georgia,"Times New Roman",Times,serif; */
+    color: #524645;
+    font-size: 1.1em;
+
+}
+.list ul li span {
+    font-size: 0.8em;
+    font-style: italic;
+}
+pre {
+    font-family: "Roboto Mono",Menlo,Monaco,Consolas,"Courier New",monospace;
+    /* border: 1px solid #4f94e0 */
+    font-size: 1em;
+}
+
+body {
+    font-family: Lora,Georgia,"Times New Roman",Times,serif;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #211b1a;
+    background-color: aliceblue;
+}
+.navigation {
+    background-color: #e7ead2;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Economica,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #4f94e0;
+    font-weight: 700;
+    margin: 6.4rem 0 3.2rem 0;
+}
+.navigation .navigation-title {
+
+    font-family: Economica,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    /* color: #4f94e0; */
+    color: #524645;
+    font-size: 26px;
+}
+
+.navigation a {
+    font-family: Coda;
+    color: #524645;
+    /* color: #681e29; */
+}
+

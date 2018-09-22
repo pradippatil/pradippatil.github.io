@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Pradip Mahadev Patil">
+    <meta name="description" content="Pradip Patil&#39;s personal website">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <base href="http://www.pradippatil.com">
+    <title>
+  Headless mode of Raspberry Pi · Pradip Patil
+</title>
+
+    <link rel="canonical" href="http://www.pradippatil.com/posts/raspberrypi-headless/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="http://www.pradippatil.com/css/coder.min.6130bcc37fe0899365dd962210d3a13994cf8c438aba750864bcaf4c548dc01a.css" integrity="sha256-YTC8w3/giZNl3ZYiENOhOZTPjEOKunUIZLyvTFSNwBo=" media="screen">
+    
+
+    
+
+    
+      <link rel="stylesheet" href="http://www.pradippatil.com/css/coder-custom.css">
+    
+
+    <link rel="icon" type="image/png" href="http://www.pradippatil.com/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://www.pradippatil.com/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.48" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="http://www.pradippatil.com">
+      Pradip Patil
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://www.pradippatil.com/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://www.pradippatil.com/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://www.pradippatil.com/tags/">Tags</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://stackoverflow.com/users/story/3781709">About</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+  <article>
+    <header>
+      <h1 class="title">Headless mode of Raspberry Pi</h1>
+      <h2 class="date">February 17, 2017</h2>
+
+      
+    </header>
+
+    
+
+<p></br></p>
+
+<p>This post explains how to configure <a href="https://www.raspberrypi.org/products/">Raspberry Pi</a> for headless mode (with no monitor and keyboard/mouse of its own).</p>
+
+<p></br></p>
+
+<h3 id="things-we-need">Things we need</h3>
+
+<ol>
+<li>Raspberry Pi</li>
+<li>SD / microSD card (4GB+)</li>
+<li>USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt)</li>
+<li>USB power cable</li>
+<li>A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection)</li>
+<li>Internet connection</li>
+</ol>
+
+<p><img src="http://www.pradippatil.com/img/rpi_components.png" alt="Components" /></p>
+
+<p></br></p>
+
+<h3 id="download-os-image-for-raspberry-pi">Download OS image for Raspberry Pi</h3>
+
+<p><strong>Raspbian</strong> is the Foundation’s official supported operating system which comes in 2 flavours:</p>
+
+<ol>
+<li><code>RASPBIAN JESSIE WITH PIXEL</code> - Full image which includes a new desktop environment called PIXEL (Pi Improved Xwindows Environment Lightweight) and many pre-installed applications.</li>
+<li><code>RASPBIAN JESSIE LITE</code> - Minimal image which doesn&rsquo;t include desktop environment and includes core packages. <em>Ideal for headless mode</em></li>
+</ol>
+
+<p>Let&rsquo;s use minimal version <code>RASPBIAN JESSIE LITE</code>.
+<a href="https://www.raspberrypi.org/downloads/raspbian/">Download</a> and extract it.</p>
+
+<p><img src="http://www.pradippatil.com/img/raspbian.png" alt="Raspbian" /></p>
+
+<p></br></p>
+
+<h3 id="install-raspbian-image-on-sd-microsd">Install Raspbian image on SD / microSD</h3>
+
+<p>(I am doing this on my Ubuntu laptop. Check <a href="http://elinux.org/RPi_Easy_SD_Card_Setup">this url</a> for other OS/methods)</p>
+
+<p>Insert SD/microSD into computer using USB Card reader or SD card slot and burn Raspbian Lite image using <a href="https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/">ImageWriter</a>.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install usb-imagewriter <span style="color:#007f7f"># install ImageWriter if you don&#39;t have it
+</span><span style="color:#007f7f"></span>sudo imagewriter</code></pre></div>
+<p><img src="http://www.pradippatil.com/img/imagewriter_0.png" alt="ImageWriter" /></p>
+
+<p>After successful completion Raspbian should be ready to use.</p>
+
+<p></br></p>
+
+<h3 id="enable-ssh-in-newly-installed-raspbian">Enable SSH in newly installed Raspbian</h3>
+
+<p>SSH is disabled by default in Raspbian. To enable it create an empty file with name &ldquo;ssh&rdquo; in <em>boot</em> partition</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">% <span style="color:#fff;font-weight:bold">cd</span> /path/to/sd/card/boot <span style="color:#007f7f"># note that we have to create it in boot
+</span><span style="color:#007f7f"></span>% cat /dev/null &gt; ssh  # blank file</code></pre></div>
+<p></br></p>
+
+<h3 id="configure-wifi-connection">Configure WiFi connection</h3>
+
+<p>Edit <code>wpa_supplicant.conf</code> configuration file from sd card using root access</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">% <span style="color:#fff;font-weight:bold">cd</span> /path/to/sd/card/
+% sudo vim etc/wpa_supplicant/wpa_supplicant.conf # use sudo</code></pre></div>
+<p>And put your wifi credentials in below format at the end</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#007f7f">network</span>=<span style="color:#0ff;font-weight:bold">{
+</span><span style="color:#0ff;font-weight:bold">    ssid=&#34;your_wifi_ssid&#34;
+</span><span style="color:#0ff;font-weight:bold">    psk=&#34;your_wifi_password&#34;</span>
+<span style="color:#007f7f">}</span></code></pre></div>
+<p>Save file and exit.</p>
+
+<p></br></p>
+
+<h3 id="access-raspberry-pi-remotely-over-wifi-using-ssh">Access Raspberry Pi remotely over WiFi (using SSH)</h3>
+
+<p>We&rsquo;ve already enabled SSH and WiFi on Raspbian so that we can access it remotely from computer.
+Insert SD/microSD card in Raspberry Pi.
+Make sure WiFi adapter is plugged in (not required for Raspberry Pi 3) and plug the power cable.
+While booting up, it&rsquo;ll connect to your local network over WiFi with given credentials in previous step.</p>
+
+<p>In order to connect to your Raspberry Pi using SSH we need to know the Pi&rsquo;s IP address.
+Thanks to <a href="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</a> auto service discovery implementation which is installed by default on debian and ubuntu systems, we can use <code>raspberrypi.local</code> to address our Raspberry Pi (without worrying about it&rsquo;s IP which can be changed by DHCP every time we will reboot/reconnect)</p>
+
+<p>Default login credentials for Raspbian are:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">username: pi
+password: raspberry</code></pre></div>
+<p>Open terminal (use <a href="http://www.putty.org/">PuTTY</a> on Windows) and ssh using user <code>pi</code></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh pi@raspberrypi.local</code></pre></div>
+<p>After entering password succesfully it will land you in Raspberry Pi.
+Let’s update it.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get update &amp;&amp; sudo apt-get upgrade</code></pre></div>
+<p>That&rsquo;s it. You can now access your RPi with any device having a utility to SSH. Here&rsquo;s my RPi with phone as head.</p>
+
+<p><img src="http://www.pradippatil.com/img/rpi_final.png" alt="myRPi" /></p>
+
+<p>Next section describes some more interesting things you can to do with your RPi. <strong>Have a hap<code>Pi</code> journey! :)</strong></p>
+
+<p></br></p>
+
+<h3 id="further-reading">Further reading:</h3>
+
+<ol>
+<li>In case you are not able ssh using <code>raspberrypi.local</code>, find Pi&rsquo;s IP address and use it instead. Check <a href="https://www.raspberrypi.org/documentation/remote-access/ip-address.md">here</a>.</li>
+<li>Use <a href="https://www.raspberrypi.org/documentation/configuration/raspi-config.md">raspi-config</a> - Raspberry Pi configuration tool in Raspbian that allows you to easily enable features such as the camera, and change your specific settings such as keyboard layout.</li>
+<li>Setup <a href="http://www.raspberry-pi-geek.com/Archive/2015/09/Making-your-projects-more-reliable">Watchdog</a> which automatically restarts RPi if it becomes unresponsive - helpful to make your projects more reliable.</li>
+<li>Install <a href="https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04">Fail2ban</a> which bans IPs that show the malicious signs of incorrect authentications attempts.</li>
+<li>Although Raspbian Lite doesn&rsquo;t include GUI by default, we can easily install one and access Raspbian via GUI. Follow this guide - <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=66&amp;t=133691">Raspbian Lite with PIXEL/LXDE/XFCE/MATE/Openbox GUI</a></li>
+<li>Access Raspberry Pi over <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/">VNC</a></li>
+</ol>
+
+  </article>
+
+  <br/>
+
+  
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  
+
+</section>
+
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>
