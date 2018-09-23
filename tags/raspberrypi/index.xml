@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Raspberrypi on Pradip Patil</title>
-    <link>http://www.pradippatil.com/tags/raspberrypi/</link>
+    <link>http://pradippatil.com/tags/raspberrypi/</link>
     <description>Recent content in Raspberrypi on Pradip Patil</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 26 Feb 2017 15:22:10 -0500</lastBuildDate>
     
-	<atom:link href="http://www.pradippatil.com/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://pradippatil.com/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Install Go on Raspberry Pi</title>
-      <link>http://www.pradippatil.com/posts/golang-on-rpi/</link>
+      <link>http://pradippatil.com/posts/golang-on-rpi/</link>
       <pubDate>Sun, 26 Feb 2017 15:22:10 -0500</pubDate>
       
-      <guid>http://www.pradippatil.com/posts/golang-on-rpi/</guid>
+      <guid>http://pradippatil.com/posts/golang-on-rpi/</guid>
       <description>Go Programming language is becoming popular in IoT sphere as well. I am very fascinated by Go powered robotics/IoT framework Gobot and planning to play with it using my RPi.
 This post explains how to install Go on Raspberry Pi.
 My RPi (2 Model B) shows it has ARMv7 processor.
@@ -25,10 +25,10 @@ $ uname -m armv7l Go&amp;rsquo;s current stable version 1.8 has official ARMv6 b
     
     <item>
       <title>Headless mode of Raspberry Pi</title>
-      <link>http://www.pradippatil.com/posts/raspberrypi-headless/</link>
+      <link>http://pradippatil.com/posts/raspberrypi-headless/</link>
       <pubDate>Fri, 17 Feb 2017 22:15:38 -0500</pubDate>
       
-      <guid>http://www.pradippatil.com/posts/raspberrypi-headless/</guid>
+      <guid>http://pradippatil.com/posts/raspberrypi-headless/</guid>
       <description>This post explains how to configure Raspberry Pi for headless mode (with no monitor and keyboard/mouse of its own).
 
 Things we need  Raspberry Pi SD / microSD card (4GB+) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection</description>
