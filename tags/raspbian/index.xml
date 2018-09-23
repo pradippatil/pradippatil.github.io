@@ -13,10 +13,10 @@
     
     <item>
       <title>Headless mode of Raspberry Pi</title>
-      <link>http://pradippatil.com/posts/raspberrypi-headless/</link>
+      <link>http://pradippatil.com/post/raspberrypi-headless/</link>
       <pubDate>Fri, 17 Feb 2017 22:15:38 -0500</pubDate>
       
-      <guid>http://pradippatil.com/posts/raspberrypi-headless/</guid>
+      <guid>http://pradippatil.com/post/raspberrypi-headless/</guid>
       <description>This post explains how to configure Raspberry Pi for headless mode (with no monitor and keyboard/mouse of its own).
 
 Things we need  Raspberry Pi SD / microSD card (4GB+) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection</description>

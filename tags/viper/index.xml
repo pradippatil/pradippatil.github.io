@@ -13,10 +13,10 @@
     
     <item>
       <title>Configuration management in Go (using Viper)</title>
-      <link>http://pradippatil.com/posts/viper/</link>
+      <link>http://pradippatil.com/post/viper/</link>
       <pubDate>Sat, 14 Jan 2017 23:19:36 -0500</pubDate>
       
-      <guid>http://pradippatil.com/posts/viper/</guid>
+      <guid>http://pradippatil.com/post/viper/</guid>
       <description>Config factor from The Twelve-Factor App states that application&amp;rsquo;s configuration should be isolated from code to make configuring an app for different environments very convenient and scaling it up a breeze.
 Configuration management for modern applications which run on so many different environment is becoming complex with advent of microservices and cloud computing. Not to mention dealing with several formats/markup languages to store app&amp;rsquo;s configurations.
 This post is about one of my favorite Go libraries Viper which claims to be a complete configuration solution for Go applications.</description>
