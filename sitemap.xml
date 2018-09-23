@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://pradippatil.com/post/golang-on-rpi/</loc>
+    <lastmod>2017-02-26T15:22:10-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/post/raspberrypi-headless/</loc>
+    <lastmod>2017-02-17T22:15:38-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/post/viper/</loc>
+    <lastmod>2017-01-14T23:19:36-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/projects/</loc>
+    <lastmod>2016-12-18T18:32:42-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/post/how-to-hugo/</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/license/</loc>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/tags/droneio/</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/tags/githubpages/</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/tags/golang/</loc>
+    <lastmod>2017-02-26T15:22:10-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/tags/hugo/</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/categories/hugo/</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/post/</loc>
+    <lastmod>2017-02-26T15:22:10-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/</loc>
+    <lastmod>2017-02-26T15:22:10-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/tags/raspberrypi/</loc>
+    <lastmod>2017-02-26T15:22:10-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/tags/raspbian/</loc>
+    <lastmod>2017-02-17T22:15:38-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/tags/</loc>
+    <lastmod>2016-07-20T22:04:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://pradippatil.com/tags/viper/</loc>
+    <lastmod>2017-01-14T23:19:36-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

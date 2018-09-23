@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Pradip Mahadev Patil">
+    <meta name="description" content="Pradip Patil&#39;s personal website">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <base href="http://pradippatil.com">
+    <title>
+  Configuration management in Go (using Viper) · Pradip Patil
+</title>
+
+    <link rel="canonical" href="http://pradippatil.com/post/viper/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="http://pradippatil.com/css/coder.min.6130bcc37fe0899365dd962210d3a13994cf8c438aba750864bcaf4c548dc01a.css" integrity="sha256-YTC8w3/giZNl3ZYiENOhOZTPjEOKunUIZLyvTFSNwBo=" media="screen">
+    
+
+    
+
+    
+      <link rel="stylesheet" href="http://pradippatil.com/css/coder-custom.css">
+    
+
+    <link rel="icon" type="image/png" href="http://pradippatil.com/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://pradippatil.com/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.48" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="http://pradippatil.com">
+      Pradip Patil
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://pradippatil.com/post/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://pradippatil.com/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://pradippatil.com/tags/">Tags</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://stackoverflow.com/users/story/3781709">About</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+  <article>
+    <header>
+      <h1 class="title">Configuration management in Go (using Viper)</h1>
+      <h2 class="date">January 14, 2017</h2>
+
+      
+    </header>
+
+    
+
+<p></br>
+<code>Config</code> factor from <a href="https://12factor.net/config">The Twelve-Factor App</a> states that application&rsquo;s configuration should be
+isolated from code to make configuring an app for different environments very convenient and scaling it up a breeze.</p>
+
+<p>Configuration management for modern applications which run on so many different environment is becoming complex with advent of microservices and cloud computing.
+Not to mention dealing with several formats/markup languages to store app&rsquo;s configurations.</p>
+
+<p>This post is about one of my favorite <em>Go</em> libraries <a href="https://github.com/spf13/viper">Viper</a> which claims to be a complete configuration solution for <em>Go</em> applications. Among other features, it supports (as of this writing) reading configuration from</p>
+
+<ul>
+<li>JSON, TOML, YAML, HCL, and Java properties config files</li>
+<li>Environment variables</li>
+<li>Commandline flags</li>
+<li>Remote config systems (etcd or Consul)</li>
+</ul>
+
+<p>Let&rsquo;s see how to use Viper to take advantage of some of these features.</p>
+
+<h2 id="install-viper">Install Viper</h2>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">go get github.com/spf13/viper</code></pre></div>
+<h2 id="read-from-config-file">Read from config file</h2>
+
+<p>While it supports various file formats, we&rsquo;ll use an example JSON configuration below.</p>
+
+<p><code>/config/env.json</code></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">{
+    <span style="font-weight:bold">&#34;prod&#34;</span>: {
+        <span style="font-weight:bold">&#34;host&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;192.168.1.1&#34;</span>,
+        <span style="font-weight:bold">&#34;port&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;8081&#34;</span>,
+        <span style="font-weight:bold">&#34;enabled&#34;</span>: <span style="color:#fff;font-weight:bold">true</span>
+    },
+    <span style="font-weight:bold">&#34;dev&#34;</span>: {
+        <span style="font-weight:bold">&#34;host&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;192.168.1.2&#34;</span>,
+        <span style="font-weight:bold">&#34;port&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;8082&#34;</span>,
+        <span style="font-weight:bold">&#34;enabled&#34;</span>: <span style="color:#fff;font-weight:bold">true</span>
+    },
+    <span style="font-weight:bold">&#34;qa&#34;</span>: {
+        <span style="font-weight:bold">&#34;host&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;192.168.1.3&#34;</span>,
+        <span style="font-weight:bold">&#34;port&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;8083&#34;</span>,
+        <span style="font-weight:bold">&#34;enabled&#34;</span>: <span style="color:#fff;font-weight:bold">true</span>
+    }
+}</code></pre></div>
+<p>Note: Viper does not require any initialization before using, unless we&rsquo;ll be dealing multiple different configurations.
+check <a href="https://github.com/spf13/viper#working-with-multiple-vipers">working with multiple vipers</a></p>
+
+<h3 id="set-config-file-we-want-to-read">Set config file we want to read.</h3>
+
+<p>There are 2 ways to do this.<br />
+Set path including config file name and extension</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">viper.SetConfigFile(<span style="color:#0ff;font-weight:bold">&#34;./configs/env.json&#34;</span>)</code></pre></div>
+<p><strong>Or</strong> Set path(s) to loook for config files in.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#007f7f">// Add paths. Accepts multiple paths. It will search these paths in given order
+</span><span style="color:#007f7f"></span>viper.AddConfigPath(<span style="color:#0ff;font-weight:bold">&#34;./configs&#34;</span>)
+viper.AddConfigPath(<span style="color:#0ff;font-weight:bold">&#34;$HOME/configs&#34;</span>)
+<span style="color:#007f7f">// And then register config file name (no extension)
+</span><span style="color:#007f7f"></span>viper.SetConfigName(<span style="color:#0ff;font-weight:bold">&#34;env&#34;</span>)
+<span style="color:#007f7f">// Optionally we can set specific config type
+</span><span style="color:#007f7f"></span>// viper.SetConfigType(<span style="color:#0ff;font-weight:bold">&#34;json&#34;</span>)</code></pre></div>
+<h3 id="read-the-config-file-in-viper">Read the config file in <code>viper</code></h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#007f7f">// Searches for config file in given paths and read it
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">if</span> err := viper.ReadInConfig(); err != <span style="color:#fff;font-weight:bold">nil</span> {
+    log.Fatalf(<span style="color:#0ff;font-weight:bold">&#34;Error reading config file, %s&#34;</span>, err)
+}
+
+<span style="color:#007f7f">// Confirm which config file is used
+</span><span style="color:#007f7f"></span>fmt.Printf(<span style="color:#0ff;font-weight:bold">&#34;Using config: %s\n&#34;</span>, viper.ConfigFileUsed())</code></pre></div>
+<h3 id="get-values-from-viper">Get values from <code>viper</code></h3>
+
+<p><a href="https://godoc.org/github.com/spf13/viper#Get">Get</a> method
+can retrieve any value given the key (case-insensitive) to use.
+Get returns an interface. For a specific value use one of the Get____ methods (e.g. GetInt, GetBool etc)</p>
+
+<!-- TODO Get has the behavior of returning the value associated with the first place from where it is set.
+Viper will check in the following order: override, flag, env, config file, key/value store, default
+-->
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">port := viper.Get(<span style="color:#0ff;font-weight:bold">&#34;prod.port&#34;</span>) <span style="color:#007f7f">// returns string 
+</span><span style="color:#007f7f">//port := viper.GetInt(&#34;prod.port&#34;) // returns integer
+</span><span style="color:#007f7f"></span>fmt.Printf(<span style="color:#0ff;font-weight:bold">&#34;Value: %v, Type: %T\n&#34;</span>, port, port)</code></pre></div>
+<h3 id="check-if-a-particular-key-is-set-using-isset">Check if a particular key is set using <code>IsSet</code></h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#fff;font-weight:bold">if</span> !viper.IsSet(<span style="color:#0ff;font-weight:bold">&#34;prod.port&#34;</span>) {
+    log.Fatal(<span style="color:#0ff;font-weight:bold">&#34;missing port number&#34;</span>)
+}</code></pre></div>
+<p>Notice that we can trverse nested configuration using a <code>.</code> delimited path  e.g. prod.port</p>
+
+<h3 id="read-values-in-struct">Read values in <code>struct</code></h3>
+
+<p>Instead of reading keys one by one we can extract sub-tree using <code>Sub</code> and decode it in struct using <code>Unmarshal</code></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">prod := viper.Sub(<span style="color:#0ff;font-weight:bold">&#34;prod&#34;</span>)
+
+<span style="color:#007f7f">// Unmarshal into struct. Struct fields should match keys from config (case in-sensitive)
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">type</span> config <span style="color:#fff;font-weight:bold">struct</span> {
+    Host    <span style="color:#fff;font-weight:bold">string</span>
+    Port    <span style="color:#fff;font-weight:bold">int</span>
+    enabled <span style="color:#fff;font-weight:bold">bool</span>
+}
+
+<span style="color:#fff;font-weight:bold">var</span> C config
+
+err := prod.Unmarshal(&amp;C)
+<span style="color:#fff;font-weight:bold">if</span> err != <span style="color:#fff;font-weight:bold">nil</span> {
+    log.Fatalf(<span style="color:#0ff;font-weight:bold">&#34;unable to decode into struct, %v&#34;</span>, err)
+}
+fmt.Println(C.Host)</code></pre></div>
+<h2 id="read-from-env-variables-todo">Read from Env variables [TODO]</h2>
+
+<hr />
+
+<p>You can find full source of this example in <a href="https://github.com/pradippatil/tutorials/tree/master/viper">github repo</a></p>
+
+<p>This post gives just a glimpse of Viper&rsquo;s capabilities. It&rsquo;s worth exploring some of the interesting things it offers like,</p>
+
+<ul>
+<li><a href="https://github.com/spf13/viper#watching-and-re-reading-config-files">Watching and re-reading config files</a></li>
+<li><a href="https://github.com/spf13/viper#reading-config-from-ioreader">Reading from buffer/ioreader</a></li>
+<li><a href="https://github.com/spf13/viper#remote-keyvalue-store-support">Reading from remote key value store</a></li>
+<li><a href="https://github.com/spf13/viper#registering-and-using-aliases">Alias for values</a></li>
+</ul>
+
+  </article>
+
+  <br/>
+
+  
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "pradippatil" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  
+
+</section>
+
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     
+  </section>
+</footer>
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-12859140-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </body>
+
+</html>
