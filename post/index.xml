@@ -30,8 +30,7 @@ $ uname -m armv7l Go&amp;rsquo;s current stable version 1.8 has official ARMv6 b
       
       <guid>http://pradippatil.com/post/raspberrypi-headless/</guid>
       <description>This post explains how to configure Raspberry Pi for headless mode (with no monitor and keyboard/mouse of its own).
-
-Things we need  Raspberry Pi SD / microSD card (4GB+) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection</description>
+Things we need  Raspberry Pi SD / microSD card (4GB+) USB WiFi adapter (Not required for Raspberry Pi 3 which has WiFi inbuilt) USB power cable A computer with Linux, macOS or Windows (for burning OS image to SD / microSD and remote connection) Internet connection  Download OS image for Raspberry Pi Raspbian is the Foundation’s official supported operating system which comes in 2 flavours:</description>
     </item>
     
     <item>

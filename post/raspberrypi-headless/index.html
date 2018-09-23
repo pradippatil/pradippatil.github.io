@@ -88,11 +88,7 @@
 
     
 
-<p></br></p>
-
 <p>This post explains how to configure <a href="https://www.raspberrypi.org/products/">Raspberry Pi</a> for headless mode (with no monitor and keyboard/mouse of its own).</p>
-
-<p></br></p>
 
 <h3 id="things-we-need">Things we need</h3>
 
@@ -106,8 +102,6 @@
 </ol>
 
 <p><img src="http://pradippatil.com/img/rpi_components.png" alt="Components" /></p>
-
-<p></br></p>
 
 <h3 id="download-os-image-for-raspberry-pi">Download OS image for Raspberry Pi</h3>
 
@@ -123,8 +117,6 @@
 
 <p><img src="http://pradippatil.com/img/raspbian.png" alt="Raspbian" /></p>
 
-<p></br></p>
-
 <h3 id="install-raspbian-image-on-sd-microsd">Install Raspbian image on SD / microSD</h3>
 
 <p>(I am doing this on my Ubuntu laptop. Check <a href="http://elinux.org/RPi_Easy_SD_Card_Setup">this url</a> for other OS/methods)</p>
@@ -136,15 +128,11 @@
 
 <p>After successful completion Raspbian should be ready to use.</p>
 
-<p></br></p>
-
 <h3 id="enable-ssh-in-newly-installed-raspbian">Enable SSH in newly installed Raspbian</h3>
 
 <p>SSH is disabled by default in Raspbian. To enable it create an empty file with name &ldquo;ssh&rdquo; in <em>boot</em> partition</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">% <span style="color:#fff;font-weight:bold">cd</span> /path/to/sd/card/boot <span style="color:#007f7f"># note that we have to create it in boot
 </span><span style="color:#007f7f"></span>% cat /dev/null &gt; ssh  # blank file</code></pre></div>
-<p></br></p>
-
 <h3 id="configure-wifi-connection">Configure WiFi connection</h3>
 
 <p>Edit <code>wpa_supplicant.conf</code> configuration file from sd card using root access</p>
@@ -156,8 +144,6 @@
 </span><span style="color:#0ff;font-weight:bold">    psk=&#34;your_wifi_password&#34;</span>
 <span style="color:#007f7f">}</span></code></pre></div>
 <p>Save file and exit.</p>
-
-<p></br></p>
 
 <h3 id="access-raspberry-pi-remotely-over-wifi-using-ssh">Access Raspberry Pi remotely over WiFi (using SSH)</h3>
 
@@ -182,8 +168,6 @@ Let’s update it.</p>
 <p><img src="http://pradippatil.com/img/rpi_final.png" alt="myRPi" /></p>
 
 <p>Next section describes some more interesting things you can to do with your RPi. <strong>Have a hap<code>Pi</code> journey! :)</strong></p>
-
-<p></br></p>
 
 <h3 id="further-reading">Further reading:</h3>
 

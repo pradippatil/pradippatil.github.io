@@ -88,8 +88,7 @@
 
     
 
-<p></br>
-<code>Config</code> factor from <a href="https://12factor.net/config">The Twelve-Factor App</a> states that application&rsquo;s configuration should be
+<p><code>Config</code> factor from <a href="https://12factor.net/config">The Twelve-Factor App</a> states that application&rsquo;s configuration should be
 isolated from code to make configuring an app for different environments very convenient and scaling it up a breeze.</p>
 
 <p>Configuration management for modern applications which run on so many different environment is becoming complex with advent of microservices and cloud computing.
@@ -133,9 +132,9 @@ Not to mention dealing with several formats/markup languages to store app&rsquo;
 <p>Note: Viper does not require any initialization before using, unless we&rsquo;ll be dealing multiple different configurations.
 check <a href="https://github.com/spf13/viper#working-with-multiple-vipers">working with multiple vipers</a></p>
 
-<h3 id="set-config-file-we-want-to-read">Set config file we want to read.</h3>
+<h3 id="set-config-file-we-want-to-read">Set config file we want to read</h3>
 
-<p>There are 2 ways to do this.<br />
+<p>There are 2 ways to do this.
 Set path including config file name and extension</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">viper.SetConfigFile(<span style="color:#0ff;font-weight:bold">&#34;./configs/env.json&#34;</span>)</code></pre></div>
 <p><strong>Or</strong> Set path(s) to loook for config files in.</p>
@@ -163,7 +162,7 @@ Get returns an interface. For a specific value use one of the Get____ methods (e
 <!-- TODO Get has the behavior of returning the value associated with the first place from where it is set.
 Viper will check in the following order: override, flag, env, config file, key/value store, default
 -->
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">port := viper.Get(<span style="color:#0ff;font-weight:bold">&#34;prod.port&#34;</span>) <span style="color:#007f7f">// returns string 
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">port := viper.Get(<span style="color:#0ff;font-weight:bold">&#34;prod.port&#34;</span>) <span style="color:#007f7f">// returns string
 </span><span style="color:#007f7f">//port := viper.GetInt(&#34;prod.port&#34;) // returns integer
 </span><span style="color:#007f7f"></span>fmt.Printf(<span style="color:#0ff;font-weight:bold">&#34;Value: %v, Type: %T\n&#34;</span>, port, port)</code></pre></div>
 <h3 id="check-if-a-particular-key-is-set-using-isset">Check if a particular key is set using <code>IsSet</code></h3>
